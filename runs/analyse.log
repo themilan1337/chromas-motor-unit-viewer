@@ -1,0 +1,8 @@
+Using chunk 0 for ICA.
+Load IC sources for all chroms: 0chrom [00:00, ?chrom/s]Load IC sources for all chroms: 11chrom [00:00, 667.40chrom/s]
+Excluded 0 chromatophores from analysis due to errors in individual ICA for that chromatophores.
+Compute correlation matrix for 49 IC sources (ICs.data[IC_mask.data].shape=(49, 196)).
+NaN found in influence vector of chrom=np.uint16(54).
+Found 11 IC clusters.
+
+ICA slice clustering complete.

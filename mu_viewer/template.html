@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>CHROMAS motor unit viewer</title>
+<style>
+:root{--fg:#1d2330;--mut:#5b6475;--bd:#d6dae3;--bg:#f6f7fa;--acc:#1f5fbf}
+*{box-sizing:border-box}body{margin:0;font:14px/1.45 system-ui,sans-serif;color:var(--fg);background:var(--bg)}
+header{padding:12px 18px;background:#fff;border-bottom:1px solid var(--bd)}
+h1{font-size:17px;margin:0 0 4px}.note{color:var(--mut);font-size:12.5px;max-width:1100px}
+main{display:grid;grid-template-columns:minmax(380px,1fr) 360px;gap:14px;padding:14px 18px}
+.card{background:#fff;border:1px solid var(--bd);border-radius:6px;padding:10px}
+canvas{max-width:100%;display:block}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:3px 6px;text-align:right;border-bottom:1px solid #eceef3}
+th:first-child,td:first-child{text-align:left}tr.u{cursor:pointer}tr.u:hover{background:#eef3fc}tr.sel{background:#dce8fb}
+#list{max-height:300px;overflow:auto}label{font-size:12.5px;color:var(--mut)}
+.k{font-variant-numeric:tabular-nums}h2{font-size:14px;margin:0 0 6px}
+.warn{color:#9a4a00}
+</style></head><body>
+<header><h1>CHROMAS motor unit viewer</h1>
+<div class="note" id="note"></div></header>
+<main>
+<div><div class="card"><canvas id="img"></canvas>
+<label><input type="checkbox" id="wedges" checked> show the radial slices of the selected unit</label>
+<label style="margin-left:12px"><input type="checkbox" id="allunits"> colour every unit</label></div>
+<div class="card" style="margin-top:14px"><h2>Time courses of the unit's independent components</h2><canvas id="ts"></canvas></div></div>
+<div><div class="card"><h2>Estimated motor units (CHROMAS IC clusters)</h2>
+<label><input type="checkbox" id="multi" checked> only units that span 2+ chromatophores</label>
+<div id="list"></div></div>
+<div class="card" style="margin-top:14px"><h2 id="dh">Selected unit</h2><div id="detail" class="k"></div><canvas id="hm"></canvas></div></div>
+</main>
+<script>
+const D = __DATA__;
+const $=id=>document.getElementById(id);
+$('note').innerHTML = D.meta.note;
+const pal=i=>`hsl(${(i*137.5)%360},70%,45%)`;
+let sel=null;
+const im=new Image(); im.src=D.image;
+const cv=$('img'),cx=cv.getContext('2d');
+function draw(){
+  cv.width=D.size[1];cv.height=D.size[0];cx.drawImage(im,0,0);
+  const inSel=new Set(sel?sel.chroms:[]);
+  const unitOf={};D.units.forEach(u=>u.chroms.forEach(c=>{(unitOf[c]=unitOf[c]||[]).push(u.unit)}));
+  D.chroms.forEach(c=>{
+    let col='rgba(255,255,255,.55)',r=3;
+    if($('allunits').checked&&unitOf[c.id]){col=pal(unitOf[c.id][0]);r=4}
+    if(inSel.has(c.id)){col=pal(sel.unit);r=6}
+    cx.beginPath();cx.arc(c.x,c.y,r,0,7);cx.fillStyle=col;cx.fill();
+    if(inSel.has(c.id)){cx.lineWidth=1.5;cx.strokeStyle='#000';cx.stroke()}
+  });
+  if(sel&&$('wedges').checked){
+    const n=D.n_slices,R=D.wedge_r,step=2*Math.PI/n;
+    D.chroms.forEach(c=>{
+      const sl=D.slice_labels[c.id]; if(!sl) return;
+      sl.forEach((lab,j)=>{ if(lab!==sel.unit) return;
+        // same angle convention as CHROMAS plot_slice_cluster: 270 - orientation + (n-1-j)*360/n degrees, clockwise on screen
+        const a0=(270-c.orient+(n-1-j)*360/n)*Math.PI/180;
+        cx.beginPath();cx.moveTo(c.x,c.y);cx.arc(c.x,c.y,R,a0,a0+step);cx.closePath();
+        cx.fillStyle=pal(sel.unit);cx.globalAlpha=.55;cx.fill();cx.globalAlpha=1;});
+    });
+  }
+}
+im.onload=draw;
+function fmt(v){return v==null?'n/a':v.toFixed(3)}
+function list(){
+  const rows=D.units.filter(u=>!$('multi').checked||u.n_chroms>=2).sort((a,b)=>b.n_chroms-a.n_chroms||a.unit-b.unit);
+  $('list').innerHTML='<table><tr><th>unit</th><th>chroms</th><th>ICs</th><th>mean |r|</th><th>min |r|</th></tr>'+
+   rows.map(u=>`<tr class="u ${sel&&sel.unit===u.unit?'sel':''}" data-u="${u.unit}"><td><span style="color:${pal(u.unit)}">&#9632;</span> ${u.unit}</td><td>${u.n_chroms}</td><td>${u.n_ics}</td><td>${fmt(u.r_mean)}</td><td>${fmt(u.r_min)}</td></tr>`).join('')+'</table>';
+  document.querySelectorAll('tr.u').forEach(tr=>tr.onclick=()=>pick(+tr.dataset.u));
+}
+function pick(id){sel=D.units.find(u=>u.unit===id);list();draw();detail()}
+function detail(){
+  if(!sel){return}
+  $('dh').textContent='Unit '+sel.unit;
+  $('detail').innerHTML=`${sel.n_chroms} chromatophores, ${sel.n_ics} components<br>
+  |Pearson r| between its components: mean ${fmt(sel.r_mean)}, min ${fmt(sel.r_min)}, max ${fmt(sel.r_max)}`+
+  (sel.n_ics<2?'<br><span class="warn">One component only: no pair, so no correlation value.</span>':'')+
+  (sel.n_chroms<2?'<br><span class="warn">One chromatophore only: this is not evidence of a shared motor neuron across chromatophores.</span>':'');
+  // time courses
+  const t=$('ts'),c=t.getContext('2d'),m=sel.members,T=m[0].series.length,H=46;
+  t.width=640;t.height=Math.max(60,m.length*H+6);c.clearRect(0,0,t.width,t.height);c.font='11px system-ui';
+  m.forEach((mm,i)=>{const y0=i*H+3,s=mm.series,mn=Math.min(...s),mx=Math.max(...s),rg=(mx-mn)||1;
+    c.strokeStyle='#e3e6ee';c.strokeRect(40,y0,590,H-6);
+    c.beginPath();s.forEach((v,k)=>{const x=40+590*k/(T-1),y=y0+(H-6)*(1-(v-mn)/rg);k?c.lineTo(x,y):c.moveTo(x,y)});
+    c.strokeStyle=pal(sel.unit);c.lineWidth=1.2;c.stroke();c.fillStyle='#5b6475';c.fillText('c'+mm.chrom,2,y0+14);c.fillText('IC'+mm.comp,2,y0+28)});
+  // heatmap of |r|
+  const h=$('hm'),g=h.getContext('2d'),n=m.length,S=Math.min(26,Math.floor(320/n));
+  h.width=n*S+30;h.height=n*S+14;g.clearRect(0,0,h.width,h.height);g.font='10px system-ui';
+  for(let i=0;i<n;i++)for(let j=0;j<n;j++){const v=sel.corr[i][j];
+    g.fillStyle=v==null?'#ddd':`rgba(31,95,191,${v})`;g.fillRect(30+j*S,10+i*S,S-1,S-1);
+    if(S>=22&&v!=null){g.fillStyle=v>.55?'#fff':'#333';g.fillText(v.toFixed(2).slice(0,4),32+j*S,10+i*S+S/2+3)}}
+}
+list();
+const first=D.units.filter(u=>u.n_chroms>=2).sort((a,b)=>b.n_chroms-a.n_chroms)[0]||D.units[0];
+if(first)pick(first.unit);
+$('multi').onchange=list;$('wedges').onchange=draw;$('allunits').onchange=draw;
+</script></body></html>

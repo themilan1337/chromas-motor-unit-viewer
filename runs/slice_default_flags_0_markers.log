@@ -1,0 +1,617 @@
+Processing 3 chunks.
+Using reference chunk 0 for motion marker selection.
+
+Selecting motion markers for all chunks.
+./.venv/lib/python3.12/site-packages/chromas/source/slicing/motion_marker_utils.py:30: RuntimeWarning: invalid value encountered in divide
+  cv = np.std(areas_t, axis=1) / np.mean(areas_t, axis=1)
+
+
+--------> Error in Slicing:
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/chromas/source/utils/decorators.p │
+│ y:40 in wrapper                                                              │
+│                                                                              │
+│    37 │   │   │   │   │   else:                                              │
+│    38 │   │   │   │   │   │   use_cluster = False                            │
+│    39 │   │   │   │   # Call the original function                           │
+│ ❱  40 │   │   │   │   retval = func(*args, **kwargs)                         │
+│    41 │   │   │   except Exception as e:                                     │
+│    42 │   │   │   │   if use_cluster:                                        │
+│    43 │   │   │   │   │   _client.close()                                    │
+│                                                                              │
+│ ╭───────────────────────────────── locals ─────────────────────────────────╮ │
+│ │     _client = None                                                       │ │
+│ │    _cluster = None                                                       │ │
+│ │        args = (                                                          │ │
+│ │               │   'work/sepia_example.dataset',                          │ │
+│ │               │   36,                                                    │ │
+│ │               │   40,                                                    │ │
+│ │               │   10000,                                                 │ │
+│ │               │   0.6,                                                   │ │
+│ │               │   500,                                                   │ │
+│ │               │   0.25,                                                  │ │
+│ │               │   0.5,                                                   │ │
+│ │               │   10,                                                    │ │
+│ │               │   4,                                                     │ │
+│ │               │   ... +9                                                 │ │
+│ │               )                                                          │ │
+│ │     cluster = True                                                       │ │
+│ │           e = ValueError('Found only 0 motion markers, but need at least │ │
+│ │               4.')                                                       │ │
+│ │      kwargs = {}                                                         │ │
+│ │        task = 'Slicing'                                                  │ │
+│ │ use_cluster = False                                                      │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│                                                                              │
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/chromas/source/slicing/slicing.py │
+│ :576 in slice                                                                │
+│                                                                              │
+│   573 │   │   areas = xr.concat(adjusted_arrays, dim='frame').data           │
+│   574 │   │                                                                  │
+│   575 │   │   click.secho("\nSelecting motion markers for all chunks.")      │
+│ ❱ 576 │   │   motion_markers, params = find_motion_markers(queenframe, clean │
+│   577 │   │   │   │   │   │   │   │   │   │   │   │   │   max_area_cutoff, m │
+│   578 │   │   │   │   │   │   │   │   │   │   │   │   │   interactive=intera │
+│   579 │   │   all_motion_markers = [motion_markers] * len(chunknames)        │
+│                                                                              │
+│ ╭───────────────────────────────── locals ─────────────────────────────────╮ │
+│ │           adjusted_arr = <xarray.DataArray 'areas' (frame: 198,          │ │
+│ │                          chromatophore: 120)> Size: 48kB                 │ │
+│ │                          array([[12955,     0,     0, ...,    14,    79, │ │
+│ │                          72],                                            │ │
+│ │                          │      [13474,     0,     0, ...,    14,    85, │ │
+│ │                          70],                                            │ │
+│ │                          │      [13218,     0,     0, ...,    14,    86, │ │
+│ │                          77],                                            │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [ 9339,     0,     0, ...,    14,    98, │ │
+│ │                          85],                                            │ │
+│ │                          │      [ 9524,     0,     0, ...,    14,    83, │ │
+│ │                          78],                                            │ │
+│ │                          │      [10131,     0,     0, ...,    13,    84, │ │
+│ │                          88]],                                           │ │
+│ │                          │     shape=(198, 120), dtype=uint16)           │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * frame    (frame) int64 2kB 395 396 397 398  │ │
+│ │                          399 400 ... 588 589 590 591 592                 │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │        adjusted_arrays = [                                               │ │
+│ │                          │   <xarray.DataArray 'areas' (frame: 197,      │ │
+│ │                          chromatophore: 120)> Size: 47kB                 │ │
+│ │                          array([[38003,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [39392,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [39624,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [33841,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [32765,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [31626,     0,     0, ...,     0,     0, │ │
+│ │                          0]],                                            │ │
+│ │                          │     shape=(197, 120), dtype=uint16)           │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * frame    (frame) int64 2kB 0 1 2 3 4 5 6 7  │ │
+│ │                          ... 190 191 192 193 194 195 196                 │ │
+│ │                          Dimensions without coordinates: chromatophore,  │ │
+│ │                          │   <xarray.DataArray 'areas' (frame: 198,      │ │
+│ │                          chromatophore: 120)> Size: 48kB                 │ │
+│ │                          array([[23334,     0,     0, ...,     0,   689, │ │
+│ │                          136],                                           │ │
+│ │                          │      [24799,     0,     0, ...,     0,   677, │ │
+│ │                          142],                                           │ │
+│ │                          │      [24795,     0,     0, ...,     0,   692, │ │
+│ │                          131],                                           │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [20390,     0,     0, ...,     0,   590, │ │
+│ │                          132],                                           │ │
+│ │                          │      [20466,     0,     0, ...,     0,   603, │ │
+│ │                          130],                                           │ │
+│ │                          │      [20819,     0,     0, ...,     0,   568, │ │
+│ │                          137]],                                          │ │
+│ │                          │     shape=(198, 120), dtype=uint16)           │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * frame    (frame) int64 2kB 197 198 199 200  │ │
+│ │                          201 202 ... 390 391 392 393 394                 │ │
+│ │                          Dimensions without coordinates: chromatophore,  │ │
+│ │                          │   <xarray.DataArray 'areas' (frame: 198,      │ │
+│ │                          chromatophore: 120)> Size: 48kB                 │ │
+│ │                          array([[12955,     0,     0, ...,    14,    79, │ │
+│ │                          72],                                            │ │
+│ │                          │      [13474,     0,     0, ...,    14,    85, │ │
+│ │                          70],                                            │ │
+│ │                          │      [13218,     0,     0, ...,    14,    86, │ │
+│ │                          77],                                            │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [ 9339,     0,     0, ...,    14,    98, │ │
+│ │                          85],                                            │ │
+│ │                          │      [ 9524,     0,     0, ...,    14,    83, │ │
+│ │                          78],                                            │ │
+│ │                          │      [10131,     0,     0, ...,    13,    84, │ │
+│ │                          88]],                                           │ │
+│ │                          │     shape=(198, 120), dtype=uint16)           │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * frame    (frame) int64 2kB 395 396 397 398  │ │
+│ │                          399 400 ... 588 589 590 591 592                 │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │                          ]                                               │ │
+│ │                  areas = array([[   0,    0,    0, ...,    0,    0,      │ │
+│ │                          0],                                             │ │
+│ │                          │      [   0,    0,    0, ...,    0,    0,      │ │
+│ │                          0],                                             │ │
+│ │                          │      [   0,    0,    0, ...,    0,    0,      │ │
+│ │                          0],                                             │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [9339,    0,    0, ...,   14,   98,      │ │
+│ │                          85],                                            │ │
+│ │                          │      [9524,    0,    0, ...,   14,   83,      │ │
+│ │                          78],                                            │ │
+│ │                          │      [   0,    0,    0, ...,   13,   84,      │ │
+│ │                          88]],                                           │ │
+│ │                          │     shape=(593, 120), dtype=uint16)           │ │
+│ │                    arr = <xarray.DataArray 'areas' (frame: 198,          │ │
+│ │                          chromatophore: 120)> Size: 48kB                 │ │
+│ │                          array([[12955,     0,     0, ...,    14,    79, │ │
+│ │                          72],                                            │ │
+│ │                          │      [13474,     0,     0, ...,    14,    85, │ │
+│ │                          70],                                            │ │
+│ │                          │      [13218,     0,     0, ...,    14,    86, │ │
+│ │                          77],                                            │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [ 9339,     0,     0, ...,    14,    98, │ │
+│ │                          85],                                            │ │
+│ │                          │      [ 9524,     0,     0, ...,    14,    83, │ │
+│ │                          78],                                            │ │
+│ │                          │      [10131,     0,     0, ...,    13,    84, │ │
+│ │                          88]],                                           │ │
+│ │                          │     shape=(198, 120), dtype=uint16)           │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * frame    (frame) int64 2kB 0 1 2 3 4 5 6 7  │ │
+│ │                          ... 191 192 193 194 195 196 197                 │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │                 buffer = 40                                              │ │
+│ │                  chunk = <xarray.Dataset> Size: 620MB                    │ │
+│ │                          Dimensions:              (frame: 197,           │ │
+│ │                          chromatophore: 120, x: 1000, y: 1000,           │ │
+│ │                          │   │   │   │   │   │     coordinate: 2, point: │ │
+│ │                          62, x_grid: 63, y_grid: 63)                     │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * coordinate           (coordinate) <U1 8B    │ │
+│ │                          '0' '1'                                         │ │
+│ │                            * frame                (frame) int64 2kB 0 1  │ │
+│ │                          2 3 4 5 ... 192 193 194 195 196                 │ │
+│ │                            * point                (point) int64 496B 0 1 │ │
+│ │                          2 3 4 5 6 ... 56 57 58 59 60 61                 │ │
+│ │                            * x                    (x) int64 8kB 0 1 2 3  │ │
+│ │                          4 5 6 ... 994 995 996 997 998 999               │ │
+│ │                            * x_grid               (x_grid) int64 504B 0  │ │
+│ │                          1 2 3 4 5 6 ... 57 58 59 60 61 62               │ │
+│ │                            * y                    (y) int64 8kB 0 1 2 3  │ │
+│ │                          4 5 6 ... 994 995 996 997 998 999               │ │
+│ │                            * y_grid               (y_grid) int64 504B 0  │ │
+│ │                          1 2 3 4 5 6 ... 57 58 59 60 61 62               │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │                          Data variables:                                 │ │
+│ │                          │   areas                (frame, chromatophore) │ │
+│ │                          uint16 47kB dask.array<chunksize=(1, 120),      │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   cleanqueen           (x, y) int64 8MB       │ │
+│ │                          dask.array<chunksize=(250, 250),                │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   masterframe          (x, y) float64 8MB     │ │
+│ │                          dask.array<chunksize=(1000, 1000),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   points_trajectories  (frame, point,         │ │
+│ │                          coordinate) float32 98kB                        │ │
+│ │                          dask.array<chunksize=(197, 62, 2),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   pullbacks            (frame, x_grid,        │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   pushforwards         (frame, x_grid,        │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   segmentation         (frame, x, y) uint8    │ │
+│ │                          197MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   warped_cleanqueen    (frame, x, y) uint16   │ │
+│ │                          394MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │        chunk_selection = []                                              │ │
+│ │           chunkaverage = array([[[203, 165, 249],                        │ │
+│ │                          │   │   [202, 164, 247],                        │ │
+│ │                          │   │   [202, 164, 247],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [210, 173, 250],                        │ │
+│ │                          │   │   [215, 178, 254],                        │ │
+│ │                          │   │   [209, 172, 249]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[203, 165, 249],                        │ │
+│ │                          │   │   [203, 165, 249],                        │ │
+│ │                          │   │   [203, 165, 249],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [210, 173, 250],                        │ │
+│ │                          │   │   [214, 176, 253],                        │ │
+│ │                          │   │   [209, 172, 249]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[204, 166, 250],                        │ │
+│ │                          │   │   [204, 166, 250],                        │ │
+│ │                          │   │   [204, 166, 250],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [210, 173, 250],                        │ │
+│ │                          │   │   [214, 176, 253],                        │ │
+│ │                          │   │   [209, 172, 249]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      ...,                                     │ │
+│ │                          │                                               │ │
+│ │                          │      [[215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [219, 172, 245],                        │ │
+│ │                          │   │   [217, 168, 237],                        │ │
+│ │                          │   │   [212, 164, 232]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [219, 172, 245],                        │ │
+│ │                          │   │   [218, 168, 243],                        │ │
+│ │                          │   │   [216, 166, 240]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [219, 172, 245],                        │ │
+│ │                          │   │   [219, 169, 244],                        │ │
+│ │                          │   │   [217, 167, 242]]], shape=(1000, 1000,   │ │
+│ │                          3), dtype=uint8)                                │ │
+│ │             chunknames = ['chunk_0', 'chunk_1', 'chunk_2']               │ │
+│ │                 chunks = [                                               │ │
+│ │                          │   <xarray.Dataset> Size: 620MB                │ │
+│ │                          Dimensions:              (frame: 197,           │ │
+│ │                          chromatophore: 120, x: 1000, y: 1000,           │ │
+│ │                          │   │   │   │   │   │     coordinate: 2, point: │ │
+│ │                          62, x_grid: 63, y_grid: 63)                     │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * coordinate           (coordinate) <U1 8B    │ │
+│ │                          '0' '1'                                         │ │
+│ │                            * frame                (frame) int64 2kB 0 1  │ │
+│ │                          2 3 4 5 ... 192 193 194 195 196                 │ │
+│ │                            * point                (point) int64 496B 0 1 │ │
+│ │                          2 3 4 5 6 ... 56 57 58 59 60 61                 │ │
+│ │                            * x                    (x) int64 8kB 0 1 2 3  │ │
+│ │                          4 5 6 ... 994 995 996 997 998 999               │ │
+│ │                            * x_grid               (x_grid) int64 504B 0  │ │
+│ │                          1 2 3 4 5 6 ... 57 58 59 60 61 62               │ │
+│ │                            * y                    (y) int64 8kB 0 1 2 3  │ │
+│ │                          4 5 6 ... 994 995 996 997 998 999               │ │
+│ │                            * y_grid               (y_grid) int64 504B 0  │ │
+│ │                          1 2 3 4 5 6 ... 57 58 59 60 61 62               │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │                          Data variables:                                 │ │
+│ │                          │   areas                (frame, chromatophore) │ │
+│ │                          uint16 47kB dask.array<chunksize=(1, 120),      │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   cleanqueen           (x, y) int64 8MB       │ │
+│ │                          dask.array<chunksize=(250, 250),                │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   masterframe          (x, y) float64 8MB     │ │
+│ │                          dask.array<chunksize=(1000, 1000),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   points_trajectories  (frame, point,         │ │
+│ │                          coordinate) float32 98kB                        │ │
+│ │                          dask.array<chunksize=(197, 62, 2),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   pullbacks            (frame, x_grid,        │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   pushforwards         (frame, x_grid,        │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   segmentation         (frame, x, y) uint8    │ │
+│ │                          197MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   warped_cleanqueen    (frame, x, y) uint16   │ │
+│ │                          394MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>,                               │ │
+│ │                          │   <xarray.Dataset> Size: 619MB                │ │
+│ │                          Dimensions:              (frame: 198,           │ │
+│ │                          chromatophore: 120, x: 1000, y: 1000,           │ │
+│ │                          │   │   │   │   │   │     coordinate: 2, point: │ │
+│ │                          58, x_grid: 63, y_grid: 63)                     │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * coordinate           (coordinate) <U1 8B    │ │
+│ │                          '0' '1'                                         │ │
+│ │                            * frame                (frame) int64 2kB 0 1  │ │
+│ │                          2 3 4 5 ... 193 194 195 196 197                 │ │
+│ │                            * point                (point) int64 464B 0 1 │ │
+│ │                          2 3 4 5 6 ... 52 53 54 55 56 57                 │ │
+│ │                            * x                    (x) int64 8kB 0 1 2 3  │ │
+│ │                          4 5 6 ... 994 995 996 997 998 999               │ │
+│ │                            * x_grid               (x_grid) int64 504B 0  │ │
+│ │                          1 2 3 4 5 6 ... 57 58 59 60 61 62               │ │
+│ │                            * y                    (y) int64 8kB 0 1 2 3  │ │
+│ │                          4 5 6 ... 994 995 996 997 998 999               │ │
+│ │                            * y_grid               (y_grid) int64 504B 0  │ │
+│ │                          1 2 3 4 5 6 ... 57 58 59 60 61 62               │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │                          Data variables:                                 │ │
+│ │                          │   areas                (frame, chromatophore) │ │
+│ │                          uint16 48kB dask.array<chunksize=(1, 120),      │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   cleanqueen           (x, y) int32 4MB       │ │
+│ │                          dask.array<chunksize=(250, 500),                │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   masterframe          (x, y) float64 8MB     │ │
+│ │                          dask.array<chunksize=(1000, 1000),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   points_trajectories  (frame, point,         │ │
+│ │                          coordinate) float32 92kB                        │ │
+│ │                          dask.array<chunksize=(198, 58, 2),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   pullbacks            (frame, x_grid,        │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   pushforwards         (frame, x_grid,        │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   segmentation         (frame, x, y) uint8    │ │
+│ │                          198MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   warped_cleanqueen    (frame, x, y) uint16   │ │
+│ │                          396MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>,                               │ │
+│ │                          │   <xarray.Dataset> Size: 619MB                │ │
+│ │                          Dimensions:              (frame: 198,           │ │
+│ │                          chromatophore: 120, x: 1000, y: 1000,           │ │
+│ │                          │   │   │   │   │   │     coordinate: 2, point: │ │
+│ │                          56, x_grid: 63, y_grid: 63)                     │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * coordinate           (coordinate) <U1 8B    │ │
+│ │                          '0' '1'                                         │ │
+│ │                            * frame                (frame) int64 2kB 0 1  │ │
+│ │                          2 3 4 5 ... 193 194 195 196 197                 │ │
+│ │                            * point                (point) int64 448B 0 1 │ │
+│ │                          2 3 4 5 6 ... 50 51 52 53 54 55                 │ │
+│ │                            * x                    (x) int64 8kB 0 1 2 3  │ │
+│ │                          4 5 6 ... 994 995 996 997 998 999               │ │
+│ │                            * x_grid               (x_grid) int64 504B 0  │ │
+│ │                          1 2 3 4 5 6 ... 57 58 59 60 61 62               │ │
+│ │                            * y                    (y) int64 8kB 0 1 2 3  │ │
+│ │                          4 5 6 ... 994 995 996 997 998 999               │ │
+│ │                            * y_grid               (y_grid) int64 504B 0  │ │
+│ │                          1 2 3 4 5 6 ... 57 58 59 60 61 62               │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │                          Data variables:                                 │ │
+│ │                          │   areas                (frame, chromatophore) │ │
+│ │                          uint16 48kB dask.array<chunksize=(1, 120),      │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   cleanqueen           (x, y) int32 4MB       │ │
+│ │                          dask.array<chunksize=(250, 500),                │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   masterframe          (x, y) float64 8MB     │ │
+│ │                          dask.array<chunksize=(1000, 1000),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   points_trajectories  (frame, point,         │ │
+│ │                          coordinate) float32 89kB                        │ │
+│ │                          dask.array<chunksize=(198, 56, 2),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   pullbacks            (frame, x_grid,        │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   pushforwards         (frame, x_grid,        │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   segmentation         (frame, x, y) uint8    │ │
+│ │                          198MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   warped_cleanqueen    (frame, x, y) uint16   │ │
+│ │                          396MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          ]                                               │ │
+│ │             cleanqueen = array([[0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0]], shape=(1000,   │ │
+│ │                          1000))                                          │ │
+│ │           cluster_args = {                                               │ │
+│ │                          │   'processes': False,                         │ │
+│ │                          │   'n_workers': 4,                             │ │
+│ │                          │   'threads_per_worker': 4                     │ │
+│ │                          }                                               │ │
+│ │              combinded = True                                            │ │
+│ │       cumulative_frame = 593                                             │ │
+│ │              datagroup = 'work/sepia_example.dataset'                    │ │
+│ │             debug_args = {'debug': False, 'debug_visual': False}         │ │
+│ │                 decord = <module 'decord' from                           │ │
+│ │                          '.… │ │
+│ │             do_not_run = False                                           │ │
+│ │            interactive = False                                           │ │
+│ │                 length = 198                                             │ │
+│ │               max_area = 500                                             │ │
+│ │        max_area_cutoff = 10000                                           │ │
+│ │                 max_cv = 0.25                                            │ │
+│ │       max_eccentricity = 0.6                                             │ │
+│ │           max_movement = 15                                              │ │
+│ │ min_num_motion_markers = 4                                               │ │
+│ │               n_slices = 36                                              │ │
+│ │             only_areas = False                                           │ │
+│ │                 params = None                                            │ │
+│ │            params_path = PosixPath('work/sepia_example.dataset/._motion… │ │
+│ │             queenframe = array([[0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.]],          │ │
+│ │                          shape=(1000, 1000))                             │ │
+│ │              ref_chunk = 0                                               │ │
+│ │              stitching = <xarray.Dataset> Size: 16MB                     │ │
+│ │                          Dimensions:             (x: 1000, y: 1000,      │ │
+│ │                          src_chunk: 3, trg_chunk: 3,                     │ │
+│ │                          │   │   │   │   │   │    x_small: 33, y_small:  │ │
+│ │                          33, coord: 2)                                   │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * src_chunk           (src_chunk) int64 24B 0 │ │
+│ │                          1 2                                             │ │
+│ │                            * trg_chunk           (trg_chunk) int64 24B 0 │ │
+│ │                          1 2                                             │ │
+│ │                          Dimensions without coordinates: x, y, x_small,  │ │
+│ │                          y_small, coord                                  │ │
+│ │                          Data variables:                                 │ │
+│ │                          │   cleanqueen          (x, y) int64 8MB        │ │
+│ │                          dask.array<chunksize=(250, 250),                │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   queenframe          (x, y) float64 8MB      │ │
+│ │                          dask.array<chunksize=(250, 250),                │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   reprojection_error  (src_chunk, trg_chunk)  │ │
+│ │                          float64 72B dask.array<chunksize=(3, 3),        │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   stitching_matrix    (src_chunk, trg_chunk,  │ │
+│ │                          x_small, y_small, coord) float32 78kB           │ │
+│ │                          dask.array<chunksize=(3, 3, 33, 33, 2),         │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │           use_defaults = False                                           │ │
+│ │                  video = 'work/sepia_example_chunk_0.mp4'                │ │
+│ │             zarr_store = <zarr.hierarchy.Group '/'>                      │ │
+│ │       zero_consecutive = 10                                              │ │
+│ │        zero_proportion = 0.5                                             │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│                                                                              │
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/chromas/source/slicing/slicing.py │
+│ :244 in find_motion_markers                                                  │
+│                                                                              │
+│   241 │   │   params = {'max_eccentricity': max_eccentricity, 'max_area': ma │
+│   242 │                                                                      │
+│   243 │   if len(motion_markers) < min_num_motion_markers:                   │
+│ ❱ 244 │   │   raise ValueError(f'Found only {len(motion_markers)} motion mar │
+│   245 │                                                                      │
+│   246 │   return motion_markers, params                                      │
+│   247                                                                        │
+│                                                                              │
+│ ╭───────────────────────────────── locals ─────────────────────────────────╮ │
+│ │                  areas = array([[   0,    0,    0, ...,    0,    0,      │ │
+│ │                          0],                                             │ │
+│ │                          │      [   0,    0,    0, ...,    0,    0,      │ │
+│ │                          0],                                             │ │
+│ │                          │      [   0,    0,    0, ...,    0,    0,      │ │
+│ │                          0],                                             │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [9339,    0,    0, ...,   14,   98,      │ │
+│ │                          85],                                            │ │
+│ │                          │      [9524,    0,    0, ...,   14,   83,      │ │
+│ │                          78],                                            │ │
+│ │                          │      [   0,    0,    0, ...,   13,   84,      │ │
+│ │                          88]],                                           │ │
+│ │                          │     shape=(593, 120), dtype=uint16)           │ │
+│ │           chunkaverage = array([[[203, 165, 249],                        │ │
+│ │                          │   │   [202, 164, 247],                        │ │
+│ │                          │   │   [202, 164, 247],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [210, 173, 250],                        │ │
+│ │                          │   │   [215, 178, 254],                        │ │
+│ │                          │   │   [209, 172, 249]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[203, 165, 249],                        │ │
+│ │                          │   │   [203, 165, 249],                        │ │
+│ │                          │   │   [203, 165, 249],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [210, 173, 250],                        │ │
+│ │                          │   │   [214, 176, 253],                        │ │
+│ │                          │   │   [209, 172, 249]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[204, 166, 250],                        │ │
+│ │                          │   │   [204, 166, 250],                        │ │
+│ │                          │   │   [204, 166, 250],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [210, 173, 250],                        │ │
+│ │                          │   │   [214, 176, 253],                        │ │
+│ │                          │   │   [209, 172, 249]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      ...,                                     │ │
+│ │                          │                                               │ │
+│ │                          │      [[215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [219, 172, 245],                        │ │
+│ │                          │   │   [217, 168, 237],                        │ │
+│ │                          │   │   [212, 164, 232]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [219, 172, 245],                        │ │
+│ │                          │   │   [218, 168, 243],                        │ │
+│ │                          │   │   [216, 166, 240]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [219, 172, 245],                        │ │
+│ │                          │   │   [219, 169, 244],                        │ │
+│ │                          │   │   [217, 167, 242]]], shape=(1000, 1000,   │ │
+│ │                          3), dtype=uint8)                                │ │
+│ │             cleanqueen = array([[0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0]], shape=(1000,   │ │
+│ │                          1000))                                          │ │
+│ │                  debug = False                                           │ │
+│ │           debug_visual = False                                           │ │
+│ │            interactive = False                                           │ │
+│ │            masterframe = array([[0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.]],          │ │
+│ │                          shape=(1000, 1000))                             │ │
+│ │               max_area = 500                                             │ │
+│ │        max_area_cutoff = 10000                                           │ │
+│ │                 max_cv = 0.25                                            │ │
+│ │       max_eccentricity = 0.6                                             │ │
+│ │ min_num_motion_markers = 4                                               │ │
+│ │         motion_markers = array([], dtype=int64)                          │ │
+│ │                 params = {                                               │ │
+│ │                          │   'max_eccentricity': 0.6,                    │ │
+│ │                          │   'max_area': 500,                            │ │
+│ │                          │   'max_cv': 0.25,                             │ │
+│ │                          │   'zero_proportion': 0.5,                     │ │
+│ │                          │   'zero_consecutive': 10                      │ │
+│ │                          }                                               │ │
+│ │       zero_consecutive = 10                                              │ │
+│ │        zero_proportion = 0.5                                             │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────╯
+ValueError: Found only 0 motion markers, but need at least 4.
+
+
+Slicing failed!

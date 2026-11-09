@@ -1,0 +1,19 @@
+Processing 1 chunks.
+Using reference chunk 0 for motion marker selection.
+
+Selecting motion markers for all chunks.
+./.venv/lib/python3.12/site-packages/chromas/source/slicing/motion_marker_utils.py:30: RuntimeWarning: invalid value encountered in divide
+  cv = np.std(areas_t, axis=1) / np.mean(areas_t, axis=1)
+Compute sliceareas for all chunks
+Computing slice areas for chunk_0 (1/1).
+Computing epicenters of motion markers...
+./.venv/lib/python3.12/site-packages/scipy/ndimage/_measurements.py:1550: RuntimeWarning: invalid value encountered in divide
+  results = [sum_labels(input * grids[dir].astype(float), labels, index) / normalizer
+Found 28 motion markers, 11 non-motion-markers and 10 epiframes.
+Computing local coordinates...
+Computing epicenters...
+Computing sliceareas for chunk chunk_0 (100.00%).
+Stored epicenters and sliceareas for chunk chunk_0 (100.00%).
+Concatenating slice areas from all chunks.
+
+Slicing complete.

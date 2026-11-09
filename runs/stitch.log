@@ -1,0 +1,12 @@
+./.venv/lib/python3.12/site-packages/chromas/source/stitching/minimal_removal.py:68: SyntaxWarning: invalid escape sequence '\M'
+  print("\Mask:\n", mask.astype(int))
+[INFO] Search space: ((512.0, 2.0), (0.35, 0.035), (None, None), (None, None))
+Stitching:   0%|          | 0/3 [00:00<?, ?it/s]Stitching:  67%|██████▋   | 2/3 [00:17<00:08,  8.55s/it]Stitching: 100%|██████████| 3/3 [00:35<00:00, 12.53s/it]Stitching: 100%|██████████| 3/3 [00:35<00:00, 11.73s/it]
+Stitching:   0%|          | 0/3 [00:00<?, ?it/s]Stitching:  33%|███▎      | 1/3 [00:16<00:33, 16.54s/it]Stitching: 100%|██████████| 3/3 [00:33<00:00, 10.49s/it]Stitching: 100%|██████████| 3/3 [00:33<00:00, 11.10s/it]
+Stitching:   0%|          | 0/3 [00:00<?, ?it/s]Stitching:  33%|███▎      | 1/3 [00:17<00:34, 17.38s/it]Stitching:  67%|██████▋   | 2/3 [00:34<00:17, 17.42s/it]Stitching: 100%|██████████| 3/3 [00:34<00:00, 11.61s/it]
+Scoring mappings ...:   0%|          | 0/9 [00:00<?, ?it/s]Scoring mappings ...: 100%|██████████| 9/9 [00:00<00:00, 24528.09it/s]
+./.venv/lib/python3.12/site-packages/chromas/source/stitching/stitching.py:448: RuntimeWarning: invalid value encountered in divide
+  return good_size / np.float32(mask_size)
+[INFO] Reference chunk: 0
+
+Stitching complete.

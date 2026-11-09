@@ -1,0 +1,15 @@
+[project]
+name = "chromas-motor-unit-viewer"
+version = "0.1.0"
+description = "Motor unit viewer on top of CHROMAS 0.1.1 output"
+requires-python = "==3.12.*"
+dependencies = [
+  "chromas==0.1.1",  # chromas itself requires pytest
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

@@ -1,0 +1,1625 @@
+Processing 1 chunks.
+[WARNING] Deleting slicing from dataset since it already existed.
+Using reference chunk 0 for motion marker selection.
+
+Selecting motion markers for all chunks.
+  cv = np.std(areas_t, axis=1) / np.mean(areas_t, axis=1)
+Compute sliceareas for all chunks
+Computing slice areas for chunk_0 (1/1).
+Computing epicenters of motion markers...
+  results = [sum_labels(input * grids[dir].astype(float), labels, index) / normalizer
+Found 28 motion markers, 11 non-motion-markers and 10 epiframes.
+Computing local coordinates...
+
+
+--------> Error in Slicing:
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/chromas/source/utils/decorators.p │
+│ y:40 in wrapper                                                              │
+│                                                                              │
+│    37 │   │   │   │   │   else:                                              │
+│    38 │   │   │   │   │   │   use_cluster = False                            │
+│    39 │   │   │   │   # Call the original function                           │
+│ ❱  40 │   │   │   │   retval = func(*args, **kwargs)                         │
+│    41 │   │   │   except Exception as e:                                     │
+│    42 │   │   │   │   if use_cluster:                                        │
+│    43 │   │   │   │   │   _client.close()                                    │
+│                                                                              │
+│ ╭───────────────────────────────── locals ─────────────────────────────────╮ │
+│ │     _client = None                                                       │ │
+│ │    _cluster = None                                                       │ │
+│ │        args = (                                                          │ │
+│ │               │   'work/ds_np',                                          │ │
+│ │               │   36,                                                    │ │
+│ │               │   40,                                                    │ │
+│ │               │   10000,                                                 │ │
+│ │               │   0.99,                                                  │ │
+│ │               │   1000,                                                  │ │
+│ │               │   0.25,                                                  │ │
+│ │               │   0.5,                                                   │ │
+│ │               │   10,                                                    │ │
+│ │               │   4,                                                     │ │
+│ │               │   ... +9                                                 │ │
+│ │               )                                                          │ │
+│ │     cluster = True                                                       │ │
+│ │           e = ValueError('Both input arrays must be (arrays of)          │ │
+│ │               3-dimensional vectors, but they are 2 and 2 dimensional    │ │
+│ │               instead.')                                                 │ │
+│ │      kwargs = {}                                                         │ │
+│ │        task = 'Slicing'                                                  │ │
+│ │ use_cluster = False                                                      │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│                                                                              │
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/chromas/source/slicing/slicing.py │
+│ :632 in slice                                                                │
+│                                                                              │
+│   629 │   │   │   │   │   click.secho(f'[DEBUG] Deleting {var} from chunk {n │
+│   630 │   │   │   │   del zarr_store[f'{name}/{var}']                        │
+│   631 │   │                                                                  │
+│ ❱ 632 │   │   centers, motion_marker_centers, non_motion_markers, motion_mar │
+│   633                                                                        │
+│   634                                                                        │
+│   635                                                                        │
+│                                                                              │
+│ ╭───────────────────────────────── locals ─────────────────────────────────╮ │
+│ │           adjusted_arr = <xarray.DataArray 'areas' (frame: 197,          │ │
+│ │                          chromatophore: 120)> Size: 47kB                 │ │
+│ │                          array([[38003,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [39392,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [39624,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [33841,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [32765,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [31626,     0,     0, ...,     0,     0, │ │
+│ │                          0]],                                            │ │
+│ │                          │     shape=(197, 120), dtype=uint16)           │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * frame    (frame) int64 2kB 0 1 2 3 4 5 6 7  │ │
+│ │                          ... 190 191 192 193 194 195 196                 │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │        adjusted_arrays = [                                               │ │
+│ │                          │   <xarray.DataArray 'areas' (frame: 197,      │ │
+│ │                          chromatophore: 120)> Size: 47kB                 │ │
+│ │                          array([[38003,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [39392,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [39624,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [33841,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [32765,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [31626,     0,     0, ...,     0,     0, │ │
+│ │                          0]],                                            │ │
+│ │                          │     shape=(197, 120), dtype=uint16)           │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * frame    (frame) int64 2kB 0 1 2 3 4 5 6 7  │ │
+│ │                          ... 190 191 192 193 194 195 196                 │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │                          ]                                               │ │
+│ │     all_motion_markers = [                                               │ │
+│ │                          │   array([ 15,  16,  23,  25,  26,  28,  29,   │ │
+│ │                          30,  38,  39,  42,  45,  48,                    │ │
+│ │                          │   │   59,  60,  62,  69,  70,  84,  85,  86,  │ │
+│ │                          91,  93,  96, 107, 112,                         │ │
+│ │                          │      113, 114])                               │ │
+│ │                          ]                                               │ │
+│ │                  areas = array([[0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0]], shape=(197,    │ │
+│ │                          120), dtype=uint16)                             │ │
+│ │                    arr = <xarray.DataArray 'areas' (frame: 197,          │ │
+│ │                          chromatophore: 120)> Size: 47kB                 │ │
+│ │                          array([[38003,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [39392,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [39624,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [33841,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [32765,     0,     0, ...,     0,     0, │ │
+│ │                          0],                                             │ │
+│ │                          │      [31626,     0,     0, ...,     0,     0, │ │
+│ │                          0]],                                            │ │
+│ │                          │     shape=(197, 120), dtype=uint16)           │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * frame    (frame) int64 2kB 0 1 2 3 4 5 6 7  │ │
+│ │                          ... 190 191 192 193 194 195 196                 │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │                 buffer = 40                                              │ │
+│ │                  chunk = <xarray.Dataset> Size: 620MB                    │ │
+│ │                          Dimensions:                (frame: 197,         │ │
+│ │                          chromatophore: 120,                             │ │
+│ │                          │   │   │   │   │   │   │   non_motion_marker:  │ │
+│ │                          11, coordinate: 2, x: 1000,                     │ │
+│ │                          │   │   │   │   │   │   │   y: 1000,            │ │
+│ │                          motion_marker: 28, point: 62, x_grid: 63,       │ │
+│ │                          │   │   │   │   │   │   │   y_grid: 63,         │ │
+│ │                          triangle_point: 3, slice: 36)                   │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * coordinate             (coordinate) <U1 8B  │ │
+│ │                          '0' '1'                                         │ │
+│ │                            * frame                  (frame) int64 2kB 0  │ │
+│ │                          1 2 3 4 5 ... 192 193 194 195 196               │ │
+│ │                            * motion_marker          (motion_marker)      │ │
+│ │                          int64 224B 15 16 23 ... 112 113 114             │ │
+│ │                            * non_motion_marker      (non_motion_marker)  │ │
+│ │                          uint16 22B 8 24 27 ... 97 98 99                 │ │
+│ │                            * point                  (point) int64 496B 0 │ │
+│ │                          1 2 3 4 5 ... 56 57 58 59 60 61                 │ │
+│ │                            * slice                  (slice) int64 288B 0 │ │
+│ │                          1 2 3 4 5 ... 30 31 32 33 34 35                 │ │
+│ │                            * triangle_point         (triangle_point)     │ │
+│ │                          int64 24B 0 1 2                                 │ │
+│ │                            * x                      (x) int64 8kB 0 1 2  │ │
+│ │                          3 4 5 ... 994 995 996 997 998 999               │ │
+│ │                            * x_grid                 (x_grid) int64 504B  │ │
+│ │                          0 1 2 3 4 5 ... 57 58 59 60 61 62               │ │
+│ │                            * y                      (y) int64 8kB 0 1 2  │ │
+│ │                          3 4 5 ... 994 995 996 997 998 999               │ │
+│ │                            * y_grid                 (y_grid) int64 504B  │ │
+│ │                          0 1 2 3 4 5 ... 57 58 59 60 61 62               │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │                          Data variables: (12/15)                         │ │
+│ │                          │   areas                  (frame,              │ │
+│ │                          chromatophore) uint16 47kB                      │ │
+│ │                          dask.array<chunksize=(1, 120), meta=np.ndarray> │ │
+│ │                          │   centers                (frame,              │ │
+│ │                          non_motion_marker, coordinate) float64 35kB     │ │
+│ │                          dask.array<chunksize=(197, 11, 2),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   cleanqueen             (x, y) int64 8MB     │ │
+│ │                          dask.array<chunksize=(250, 250),                │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   masterframe            (x, y) float64 8MB   │ │
+│ │                          dask.array<chunksize=(1000, 1000),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   motion_marker_centers  (frame,              │ │
+│ │                          motion_marker, coordinate) float64 88kB         │ │
+│ │                          dask.array<chunksize=(197, 28, 2),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   motion_markers         (motion_marker)      │ │
+│ │                          int64 224B dask.array<chunksize=(28,),          │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   ...                     ...                 │ │
+│ │                          │   pullbacks              (frame, x_grid,      │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   pushforwards           (frame, x_grid,      │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   segmentation           (frame, x, y) uint8  │ │
+│ │                          197MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   simplices              (non_motion_marker,  │ │
+│ │                          triangle_point) int32 132B                      │ │
+│ │                          dask.array<chunksize=(11, 3), meta=np.ndarray>  │ │
+│ │                          │   slice_areas            (frame,              │ │
+│ │                          non_motion_marker, slice) float32 312kB         │ │
+│ │                          dask.array<chunksize=(1, 11, 36),               │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   warped_cleanqueen      (frame, x, y) uint16 │ │
+│ │                          394MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │        chunk_selection = [0]                                             │ │
+│ │           chunkaverage = array([[[203, 165, 249],                        │ │
+│ │                          │   │   [202, 164, 247],                        │ │
+│ │                          │   │   [202, 164, 247],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [210, 173, 250],                        │ │
+│ │                          │   │   [215, 178, 254],                        │ │
+│ │                          │   │   [209, 172, 249]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[203, 165, 249],                        │ │
+│ │                          │   │   [203, 165, 249],                        │ │
+│ │                          │   │   [203, 165, 249],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [210, 173, 250],                        │ │
+│ │                          │   │   [214, 176, 253],                        │ │
+│ │                          │   │   [209, 172, 249]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[204, 166, 250],                        │ │
+│ │                          │   │   [204, 166, 250],                        │ │
+│ │                          │   │   [204, 166, 250],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [210, 173, 250],                        │ │
+│ │                          │   │   [214, 176, 253],                        │ │
+│ │                          │   │   [209, 172, 249]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      ...,                                     │ │
+│ │                          │                                               │ │
+│ │                          │      [[215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [219, 172, 245],                        │ │
+│ │                          │   │   [217, 168, 237],                        │ │
+│ │                          │   │   [212, 164, 232]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [219, 172, 245],                        │ │
+│ │                          │   │   [218, 168, 243],                        │ │
+│ │                          │   │   [216, 166, 240]],                       │ │
+│ │                          │                                               │ │
+│ │                          │      [[215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   [215, 178, 252],                        │ │
+│ │                          │   │   ...,                                    │ │
+│ │                          │   │   [219, 172, 245],                        │ │
+│ │                          │   │   [219, 169, 244],                        │ │
+│ │                          │   │   [217, 167, 242]]], shape=(1000, 1000,   │ │
+│ │                          3), dtype=uint8)                                │ │
+│ │             chunknames = ['chunk_0']                                     │ │
+│ │                 chunks = [                                               │ │
+│ │                          │   <xarray.Dataset> Size: 620MB                │ │
+│ │                          Dimensions:                (frame: 197,         │ │
+│ │                          chromatophore: 120,                             │ │
+│ │                          │   │   │   │   │   │   │   non_motion_marker:  │ │
+│ │                          11, coordinate: 2, x: 1000,                     │ │
+│ │                          │   │   │   │   │   │   │   y: 1000,            │ │
+│ │                          motion_marker: 28, point: 62, x_grid: 63,       │ │
+│ │                          │   │   │   │   │   │   │   y_grid: 63,         │ │
+│ │                          triangle_point: 3, slice: 36)                   │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * coordinate             (coordinate) <U1 8B  │ │
+│ │                          '0' '1'                                         │ │
+│ │                            * frame                  (frame) int64 2kB 0  │ │
+│ │                          1 2 3 4 5 ... 192 193 194 195 196               │ │
+│ │                            * motion_marker          (motion_marker)      │ │
+│ │                          int64 224B 15 16 23 ... 112 113 114             │ │
+│ │                            * non_motion_marker      (non_motion_marker)  │ │
+│ │                          uint16 22B 8 24 27 ... 97 98 99                 │ │
+│ │                            * point                  (point) int64 496B 0 │ │
+│ │                          1 2 3 4 5 ... 56 57 58 59 60 61                 │ │
+│ │                            * slice                  (slice) int64 288B 0 │ │
+│ │                          1 2 3 4 5 ... 30 31 32 33 34 35                 │ │
+│ │                            * triangle_point         (triangle_point)     │ │
+│ │                          int64 24B 0 1 2                                 │ │
+│ │                            * x                      (x) int64 8kB 0 1 2  │ │
+│ │                          3 4 5 ... 994 995 996 997 998 999               │ │
+│ │                            * x_grid                 (x_grid) int64 504B  │ │
+│ │                          0 1 2 3 4 5 ... 57 58 59 60 61 62               │ │
+│ │                            * y                      (y) int64 8kB 0 1 2  │ │
+│ │                          3 4 5 ... 994 995 996 997 998 999               │ │
+│ │                            * y_grid                 (y_grid) int64 504B  │ │
+│ │                          0 1 2 3 4 5 ... 57 58 59 60 61 62               │ │
+│ │                          Dimensions without coordinates: chromatophore   │ │
+│ │                          Data variables: (12/15)                         │ │
+│ │                          │   areas                  (frame,              │ │
+│ │                          chromatophore) uint16 47kB                      │ │
+│ │                          dask.array<chunksize=(1, 120), meta=np.ndarray> │ │
+│ │                          │   centers                (frame,              │ │
+│ │                          non_motion_marker, coordinate) float64 35kB     │ │
+│ │                          dask.array<chunksize=(197, 11, 2),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   cleanqueen             (x, y) int64 8MB     │ │
+│ │                          dask.array<chunksize=(250, 250),                │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   masterframe            (x, y) float64 8MB   │ │
+│ │                          dask.array<chunksize=(1000, 1000),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   motion_marker_centers  (frame,              │ │
+│ │                          motion_marker, coordinate) float64 88kB         │ │
+│ │                          dask.array<chunksize=(197, 28, 2),              │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   motion_markers         (motion_marker)      │ │
+│ │                          int64 224B dask.array<chunksize=(28,),          │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   ...                     ...                 │ │
+│ │                          │   pullbacks              (frame, x_grid,      │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   pushforwards           (frame, x_grid,      │ │
+│ │                          y_grid, coordinate) float32 6MB                 │ │
+│ │                          dask.array<chunksize=(1, 63, 63, 2),            │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   segmentation           (frame, x, y) uint8  │ │
+│ │                          197MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   simplices              (non_motion_marker,  │ │
+│ │                          triangle_point) int32 132B                      │ │
+│ │                          dask.array<chunksize=(11, 3), meta=np.ndarray>  │ │
+│ │                          │   slice_areas            (frame,              │ │
+│ │                          non_motion_marker, slice) float32 312kB         │ │
+│ │                          dask.array<chunksize=(1, 11, 36),               │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   warped_cleanqueen      (frame, x, y) uint16 │ │
+│ │                          394MB dask.array<chunksize=(1, 1000, 1000),     │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          ]                                               │ │
+│ │             cleanqueen = array([[0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0],                 │ │
+│ │                          │      [0, 0, 0, ..., 0, 0, 0]], shape=(1000,   │ │
+│ │                          1000))                                          │ │
+│ │           cluster_args = {                                               │ │
+│ │                          │   'processes': False,                         │ │
+│ │                          │   'n_workers': 4,                             │ │
+│ │                          │   'threads_per_worker': 4                     │ │
+│ │                          }                                               │ │
+│ │              combinded = True                                            │ │
+│ │       cumulative_frame = 197                                             │ │
+│ │              datagroup = 'work/ds_np'                                    │ │
+│ │             debug_args = {'debug': False, 'debug_visual': False}         │ │
+│ │                 decord = <module 'decord' from                           │ │
+│ │                          '.… │ │
+│ │             do_not_run = False                                           │ │
+│ │                      i = 0                                               │ │
+│ │            interactive = False                                           │ │
+│ │                 length = 197                                             │ │
+│ │               max_area = 1000                                            │ │
+│ │        max_area_cutoff = 10000                                           │ │
+│ │                 max_cv = 0.25                                            │ │
+│ │       max_eccentricity = 0.99                                            │ │
+│ │           max_movement = 15                                              │ │
+│ │ min_num_motion_markers = 4                                               │ │
+│ │         motion_markers = array([ 15,  16,  23,  25,  26,  28,  29,  30,  │ │
+│ │                          38,  39,  42,  45,  48,                         │ │
+│ │                          │   │   59,  60,  62,  69,  70,  84,  85,  86,  │ │
+│ │                          91,  93,  96, 107, 112,                         │ │
+│ │                          │      113, 114])                               │ │
+│ │               n_slices = 36                                              │ │
+│ │                   name = 'chunk_0'                                       │ │
+│ │             only_areas = False                                           │ │
+│ │                 params = {                                               │ │
+│ │                          │   'max_eccentricity': 0.99,                   │ │
+│ │                          │   'max_area': 1000,                           │ │
+│ │                          │   'max_cv': 0.25,                             │ │
+│ │                          │   'zero_proportion': 0.5,                     │ │
+│ │                          │   'zero_consecutive': 10                      │ │
+│ │                          }                                               │ │
+│ │            params_path = PosixPath('work/ds_np/._motion_marker_params_a… │ │
+│ │             queenframe = array([[0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      ...,                                     │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.],           │ │
+│ │                          │      [0., 0., 0., ..., 0., 0., 0.]],          │ │
+│ │                          shape=(1000, 1000))                             │ │
+│ │              ref_chunk = 0                                               │ │
+│ │              stitching = <xarray.Dataset> Size: 16MB                     │ │
+│ │                          Dimensions:             (x: 1000, y: 1000,      │ │
+│ │                          src_chunk: 3, trg_chunk: 3,                     │ │
+│ │                          │   │   │   │   │   │    x_small: 33, y_small:  │ │
+│ │                          33, coord: 2)                                   │ │
+│ │                          Coordinates:                                    │ │
+│ │                            * src_chunk           (src_chunk) int64 24B 0 │ │
+│ │                          1 2                                             │ │
+│ │                            * trg_chunk           (trg_chunk) int64 24B 0 │ │
+│ │                          1 2                                             │ │
+│ │                          Dimensions without coordinates: x, y, x_small,  │ │
+│ │                          y_small, coord                                  │ │
+│ │                          Data variables:                                 │ │
+│ │                          │   cleanqueen          (x, y) int64 8MB        │ │
+│ │                          dask.array<chunksize=(250, 250),                │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   queenframe          (x, y) float64 8MB      │ │
+│ │                          dask.array<chunksize=(250, 250),                │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   reprojection_error  (src_chunk, trg_chunk)  │ │
+│ │                          float64 72B dask.array<chunksize=(3, 3),        │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │                          │   stitching_matrix    (src_chunk, trg_chunk,  │ │
+│ │                          x_small, y_small, coord) float32 78kB           │ │
+│ │                          dask.array<chunksize=(3, 3, 33, 33, 2),         │ │
+│ │                          meta=np.ndarray>                                │ │
+│ │           use_defaults = False                                           │ │
+│ │                    var = 'orientation_angles'                            │ │
+│ │                  video = 'work/sepia_example_chunk_0.mp4'                │ │
+│ │             zarr_store = <zarr.hierarchy.Group '/'>                      │ │
+│ │       zero_consecutive = 10                                              │ │
+│ │        zero_proportion = 0.5                                             │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│                                                                              │
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/chromas/source/slicing/slicing.py │
+│ :304 in epicenters_chunk                                                     │
+│                                                                              │
+│   301 │   │   │   │   │   │   │   │     epiframe_segmentations, epiframe_cle │
+│   302 │   │   │   │   │   │   │   │     dtype=np.float64, chunks=(1, 2, -1,  │
+│   303 │   epipositions = da.sum(epipositions, axis=0)                        │
+│ ❱ 304 │   local_coordinates, simplices = epipositions.compute()              │
+│   305 │                                                                      │
+│   306 │   local_coordinates, simplices = local_coordinates[non_motion_marker │
+│   307                                                                        │
+│                                                                              │
+│ ╭───────────────────────────────── locals ─────────────────────────────────╮ │
+│ │     _compute_local_coordinates = functools.partial(<function             │ │
+│ │                                  compute_local_coordinates at            │ │
+│ │                                  0x11e2f8360>, epiframes=[np.int64(0),   │ │
+│ │                                  np.int64(8), np.int64(46),              │ │
+│ │                                  np.int64(90), np.int64(114),            │ │
+│ │                                  np.int64(142), np.int64(170),           │ │
+│ │                                  np.int64(175), np.int64(185),           │ │
+│ │                                  np.int64(194)],                         │ │
+│ │                                  non_motion_markers=array([ 8, 24, 27,   │ │
+│ │                                  33, 34, 47, 53, 54, 97, 98, 99],        │ │
+│ │                                  dtype=uint16),                          │ │
+│ │                                  all_epiframes=array([176,   0,   0,     │ │
+│ │                                  0,   0,   0,   0,   0,  90,   0,   0,   │ │
+│ │                                  0,   0,                                 │ │
+│ │                                  │   │    0,   0, 180, 108,   0,   0,    │ │
+│ │                                  0,   0,   0,   8, 171, 142, 187,        │ │
+│ │                                  │      172,  46,  16,  17, 188,   0,    │ │
+│ │                                  0,   8, 175,   0,   0,   0, 187,        │ │
+│ │                                  │   │   97,   0,   0, 180,   0,   0,    │ │
+│ │                                  50,   0, 185, 187,   0, 111,  93,       │ │
+│ │                                  │   │    0, 114, 170,   0,   0,   0,    │ │
+│ │                                  0, 139, 117,   0,  71,   0,   0,        │ │
+│ │                                  │   │    0,   0,   0,   0,  51,  19,    │ │
+│ │                                  177,   0,   0,   0,   0,   0,   0,      │ │
+│ │                                  │   │    0,   0,   0,   0,   0,   0,    │ │
+│ │                                  87,   9, 157,   0,   0,   0,   0,       │ │
+│ │                                  │      191,   0,  47,   0,  83,  24,    │ │
+│ │                                  194,   0, 194,   0,   0,   0,   0,      │ │
+│ │                                  │   │    0,   0,   0,  43,   0,   0,    │ │
+│ │                                  0,   0, 155,  17, 185,   0,  30,        │ │
+│ │                                  │   │    0,   0,   0]), buffer=40)      │ │
+│ │ _compute_motion_marker_centers = functools.partial(<function             │ │
+│ │                                  compute_motion_marker_centers at        │ │
+│ │                                  0x11e2f82c0>, motion_markers=array([    │ │
+│ │                                  15,  16,  23,  25,  26,  28,  29,  30,  │ │
+│ │                                  38,  39,  42,  45,  48,                 │ │
+│ │                                  │   │   59,  60,  62,  69,  70,  84,    │ │
+│ │                                  85,  86,  91,  93,  96, 107, 112,       │ │
+│ │                                  │      113, 114]), buffer=40)           │ │
+│ │                    all_centers = array([[498.06990806, 455.90329835],    │ │
+│ │                                  │      [305.09813084, 871.1682243 ],    │ │
+│ │                                  │      [491.11618257, 895.8340249 ],    │ │
+│ │                                  │      [473.5856833 , 889.69305857],    │ │
+│ │                                  │      [528.2375    , 775.725     ],    │ │
+│ │                                  │      [543.98534799, 817.25641026],    │ │
+│ │                                  │      [609.33333333, 886.        ],    │ │
+│ │                                  │      [613.63473054, 881.1497006 ],    │ │
+│ │                                  │      [640.34230769, 914.87403846],    │ │
+│ │                                  │      [317.23529412, 882.82352941],    │ │
+│ │                                  │      [338.31359852, 917.93894542],    │ │
+│ │                                  │      [522.34586466, 784.84461153],    │ │
+│ │                                  │      [575.79041916, 914.19161677],    │ │
+│ │                                  │      [587.25      , 915.8125    ],    │ │
+│ │                                  │      [621.33934708, 860.80670103],    │ │
+│ │                                  │      [302.26388889, 865.73611111],    │ │
+│ │                                  │      [522.69248826, 796.73474178],    │ │
+│ │                                  │      [         nan,          nan],    │ │
+│ │                                  │      [703.5       , 842.72904192],    │ │
+│ │                                  │      [331.83448276, 902.14482759],    │ │
+│ │                                  │      [501.4       , 885.05714286],    │ │
+│ │                                  │      [467.91075515, 933.82837529],    │ │
+│ │                                  │      [         nan,          nan],    │ │
+│ │                                  │      [519.6043956 , 760.49450549],    │ │
+│ │                                  │      [644.6       , 749.4       ],    │ │
+│ │                                  │      [689.34245661, 775.85447263],    │ │
+│ │                                  │      [687.5       , 797.        ],    │ │
+│ │                                  │      [335.13207547, 847.13207547],    │ │
+│ │                                  │      [426.31120332, 811.91701245],    │ │
+│ │                                  │      [         nan,          nan],    │ │
+│ │                                  │      [705.06122449, 829.83673469],    │ │
+│ │                                  │      [337.30232558, 856.3255814 ],    │ │
+│ │                                  │      [424.27272727, 916.27272727],    │ │
+│ │                                  │      [273.27835052, 897.42268041],    │ │
+│ │                                  │      [405.42179487, 913.27820513],    │ │
+│ │                                  │      [601.95604396, 822.98412698],    │ │
+│ │                                  │      [680.24783862, 894.06628242],    │ │
+│ │                                  │      [522.06405694, 911.32384342],    │ │
+│ │                                  │      [         nan,          nan],    │ │
+│ │                                  │      [597.5505618 , 774.24719101],    │ │
+│ │                                  │      [724.55      , 768.7       ],    │ │
+│ │                                  │      [450.20622568, 863.34241245],    │ │
+│ │                                  │      [528.75820293, 863.82483594],    │ │
+│ │                                  │      [330.        , 857.42857143],    │ │
+│ │                                  │      [382.45742471, 847.7694704 ],    │ │
+│ │                                  │      [659.25819672, 821.94672131],    │ │
+│ │                                  │      [480.195     , 832.17      ],    │ │
+│ │                                  │      [269.56976744, 844.54651163],    │ │
+│ │                                  │      [707.84960422, 753.68865435],    │ │
+│ │                                  │      [300.5       , 828.        ],    │ │
+│ │                                  │      [         nan,          nan],    │ │
+│ │                                  │      [         nan,          nan],    │ │
+│ │                                  │      [         nan,          nan]])   │ │
+│ │                  all_epiframes = array([176,   0,   0,   0,   0,   0,    │ │
+│ │                                  0,   0,  90,   0,   0,   0,   0,        │ │
+│ │                                  │   │    0,   0, 180, 108,   0,   0,    │ │
+│ │                                  0,   0,   0,   8, 171, 142, 187,        │ │
+│ │                                  │      172,  46,  16,  17, 188,   0,    │ │
+│ │                                  0,   8, 175,   0,   0,   0, 187,        │ │
+│ │                                  │   │   97,   0,   0, 180,   0,   0,    │ │
+│ │                                  50,   0, 185, 187,   0, 111,  93,       │ │
+│ │                                  │   │    0, 114, 170,   0,   0,   0,    │ │
+│ │                                  0, 139, 117,   0,  71,   0,   0,        │ │
+│ │                                  │   │    0,   0,   0,   0,  51,  19,    │ │
+│ │                                  177,   0,   0,   0,   0,   0,   0,      │ │
+│ │                                  │   │    0,   0,   0,   0,   0,   0,    │ │
+│ │                                  87,   9, 157,   0,   0,   0,   0,       │ │
+│ │                                  │      191,   0,  47,   0,  83,  24,    │ │
+│ │                                  194,   0, 194,   0,   0,   0,   0,      │ │
+│ │                                  │   │    0,   0,   0,  43,   0,   0,    │ │
+│ │                                  0,   0, 155,  17, 185,   0,  30,        │ │
+│ │                                  │   │    0,   0,   0])                  │ │
+│ │                          areas = array([[38003,     0,     0, ...,       │ │
+│ │                                  0,     0,     0],                       │ │
+│ │                                  │      [39392,     0,     0, ...,       │ │
+│ │                                  0,     0,     0],                       │ │
+│ │                                  │      [39624,     0,     0, ...,       │ │
+│ │                                  0,     0,     0],                       │ │
+│ │                                  │      ...,                             │ │
+│ │                                  │      [33841,     0,     0, ...,       │ │
+│ │                                  0,     0,     0],                       │ │
+│ │                                  │      [32765,     0,     0, ...,       │ │
+│ │                                  0,     0,     0],                       │ │
+│ │                                  │      [31626,     0,     0, ...,       │ │
+│ │                                  0,     0,     0]],                      │ │
+│ │                                  │     shape=(197, 120), dtype=uint16)   │ │
+│ │                         buffer = 40                                      │ │
+│ │                      chrom_ids = array([  8,  15,  16,  23,  24,  25,    │ │
+│ │                                  26,  27,  30,  33,  34,  38,  39,       │ │
+│ │                                  │   │   45,  47,  48,  53,  54,  59,    │ │
+│ │                                  60,  69,  70,  84,  85,  91,  93,       │ │
+│ │                                  │   │   96,  97,  98,  99, 107, 112,    │ │
+│ │                                  113], dtype=uint16)                     │ │
+│ │                          chunk = <xarray.Dataset> Size: 620MB            │ │
+│ │                                  Dimensions:                (frame: 197, │ │
+│ │                                  chromatophore: 120,                     │ │
+│ │                                  │   │   │   │   │   │   │               │ │
+│ │                                  non_motion_marker: 11, coordinate: 2,   │ │
+│ │                                  x: 1000,                                │ │
+│ │                                  │   │   │   │   │   │   │   y: 1000,    │ │
+│ │                                  motion_marker: 28, point: 62, x_grid:   │ │
+│ │                                  63,                                     │ │
+│ │                                  │   │   │   │   │   │   │   y_grid: 63, │ │
+│ │                                  triangle_point: 3, slice: 36)           │ │
+│ │                                  Coordinates:                            │ │
+│ │                                    * coordinate             (coordinate) │ │
+│ │                                  <U1 8B '0' '1'                          │ │
+│ │                                    * frame                  (frame)      │ │
+│ │                                  int64 2kB 0 1 2 3 4 5 ... 192 193 194   │ │
+│ │                                  195 196                                 │ │
+│ │                                    * motion_marker                       │ │
+│ │                                  (motion_marker) int64 224B 15 16 23 ... │ │
+│ │                                  112 113 114                             │ │
+│ │                                    * non_motion_marker                   │ │
+│ │                                  (non_motion_marker) uint16 22B 8 24 27  │ │
+│ │                                  ... 97 98 99                            │ │
+│ │                                    * point                  (point)      │ │
+│ │                                  int64 496B 0 1 2 3 4 5 ... 56 57 58 59  │ │
+│ │                                  60 61                                   │ │
+│ │                                    * slice                  (slice)      │ │
+│ │                                  int64 288B 0 1 2 3 4 5 ... 30 31 32 33  │ │
+│ │                                  34 35                                   │ │
+│ │                                    * triangle_point                      │ │
+│ │                                  (triangle_point) int64 24B 0 1 2        │ │
+│ │                                    * x                      (x) int64    │ │
+│ │                                  8kB 0 1 2 3 4 5 ... 994 995 996 997 998 │ │
+│ │                                  999                                     │ │
+│ │                                    * x_grid                 (x_grid)     │ │
+│ │                                  int64 504B 0 1 2 3 4 5 ... 57 58 59 60  │ │
+│ │                                  61 62                                   │ │
+│ │                                    * y                      (y) int64    │ │
+│ │                                  8kB 0 1 2 3 4 5 ... 994 995 996 997 998 │ │
+│ │                                  999                                     │ │
+│ │                                    * y_grid                 (y_grid)     │ │
+│ │                                  int64 504B 0 1 2 3 4 5 ... 57 58 59 60  │ │
+│ │                                  61 62                                   │ │
+│ │                                  Dimensions without coordinates:         │ │
+│ │                                  chromatophore                           │ │
+│ │                                  Data variables: (12/15)                 │ │
+│ │                                  │   areas                  (frame,      │ │
+│ │                                  chromatophore) uint16 47kB              │ │
+│ │                                  dask.array<chunksize=(1, 120),          │ │
+│ │                                  meta=np.ndarray>                        │ │
+│ │                                  │   centers                (frame,      │ │
+│ │                                  non_motion_marker, coordinate) float64  │ │
+│ │                                  35kB dask.array<chunksize=(197, 11, 2), │ │
+│ │                                  meta=np.ndarray>                        │ │
+│ │                                  │   cleanqueen             (x, y) int64 │ │
+│ │                                  8MB dask.array<chunksize=(250, 250),    │ │
+│ │                                  meta=np.ndarray>                        │ │
+│ │                                  │   masterframe            (x, y)       │ │
+│ │                                  float64 8MB dask.array<chunksize=(1000, │ │
+│ │                                  1000), meta=np.ndarray>                 │ │
+│ │                                  │   motion_marker_centers  (frame,      │ │
+│ │                                  motion_marker, coordinate) float64 88kB │ │
+│ │                                  dask.array<chunksize=(197, 28, 2),      │ │
+│ │                                  meta=np.ndarray>                        │ │
+│ │                                  │   motion_markers                      │ │
+│ │                                  (motion_marker) int64 224B              │ │
+│ │                                  dask.array<chunksize=(28,),             │ │
+│ │                                  meta=np.ndarray>                        │ │
+│ │                                  │   ...                     ...         │ │
+│ │                                  │   pullbacks              (frame,      │ │
+│ │                                  x_grid, y_grid, coordinate) float32 6MB │ │
+│ │                                  dask.array<chunksize=(1, 63, 63, 2),    │ │
+│ │                                  meta=np.ndarray>                        │ │
+│ │                                  │   pushforwards           (frame,      │ │
+│ │                                  x_grid, y_grid, coordinate) float32 6MB │ │
+│ │                                  dask.array<chunksize=(1, 63, 63, 2),    │ │
+│ │                                  meta=np.ndarray>                        │ │
+│ │                                  │   segmentation           (frame, x,   │ │
+│ │                                  y) uint8 197MB dask.array<chunksize=(1, │ │
+│ │                                  1000, 1000), meta=np.ndarray>           │ │
+│ │                                  │   simplices                           │ │
+│ │                                  (non_motion_marker, triangle_point)     │ │
+│ │                                  int32 132B dask.array<chunksize=(11,    │ │
+│ │                                  3), meta=np.ndarray>                    │ │
+│ │                                  │   slice_areas            (frame,      │ │
+│ │                                  non_motion_marker, slice) float32 312kB │ │
+│ │                                  dask.array<chunksize=(1, 11, 36),       │ │
+│ │                                  meta=np.ndarray>                        │ │
+│ │                                  │   warped_cleanqueen      (frame, x,   │ │
+│ │                                  y) uint16 394MB                         │ │
+│ │                                  dask.array<chunksize=(1, 1000, 1000),   │ │
+│ │                                  meta=np.ndarray>                        │ │
+│ │                     cleanqueen = array([[0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      ...,                             │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0]],        │ │
+│ │                                  shape=(1000, 1000), dtype=uint16)       │ │
+│ │                          debug = False                                   │ │
+│ │                   debug_visual = False                                   │ │
+│ │           epiframe_cleanqueens = dask.array<getitem, shape=(10, 1000,    │ │
+│ │                                  1000), dtype=uint16, chunksize=(1,      │ │
+│ │                                  1000, 1000), chunktype=numpy.ndarray>   │ │
+│ │ epiframe_motion_marker_centers = array([[[491.17475728, 894.7961165 ],   │ │
+│ │                                  │   │   [474.15719468, 889.68440145],   │ │
+│ │                                  │   │   [543.9040404 , 818.04040404],   │ │
+│ │                                  │   │   [613.1125    , 878.6375    ],   │ │
+│ │                                  │   │   [641.59774436, 915.18922306],   │ │
+│ │                                  │   │   [338.51410658, 917.22048067],   │ │
+│ │                                  │   │   [522.71346705, 784.98280802],   │ │
+│ │                                  │   │   [576.69268293, 914.17560976],   │ │
+│ │                                  │   │   [301.57446809, 866.19148936],   │ │
+│ │                                  │   │   [523.06336088, 796.09090909],   │ │
+│ │                                  │   │   [702.28970332, 843.2495637 ],   │ │
+│ │                                  │   │   [331.25833333, 902.58333333],   │ │
+│ │                                  │   │   [469.20643432, 934.4691689 ],   │ │
+│ │                                  │   │   [335.43181818, 847.38636364],   │ │
+│ │                                  │   │   [425.73181818, 811.57272727],   │ │
+│ │                                  │   │   [701.64285714, 831.25      ],   │ │
+│ │                                  │   │   [336.92537313, 855.76119403],   │ │
+│ │                                  │   │   [423.88888889, 916.22222222],   │ │
+│ │                                  │   │   [406.16789396, 913.7628866 ],   │ │
+│ │                                  │   │   [601.39173789, 823.44586895],   │ │
+│ │                                  │   │   [679.58241758, 886.46703297],   │ │
+│ │                                  │   │   [523.10810811, 909.40540541],   │ │
+│ │                                  │   │   [598.44444444, 773.55555556],   │ │
+│ │                                  │   │   [449.38624339, 862.91534392],   │ │
+│ │                                  │   │   [659.14444444, 822.2       ],   │ │
+│ │                                  │   │   [480.1474359 , 831.63461538],   │ │
+│ │                                  │   │   [268.94736842, 844.14035088],   │ │
+│ │                                  │   │   [708.6626506 , 754.26506024]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[491.73148148, 895.49537037],   │ │
+│ │                                  │   │   [475.22875   , 890.09875   ],   │ │
+│ │                                  │   │   [545.04878049, 817.49268293],   │ │
+│ │                                  │   │   [613.95789474, 878.09473684],   │ │
+│ │                                  │   │   [643.59439528, 914.16814159],   │ │
+│ │                                  │   │   [340.02818372, 916.63569937],   │ │
+│ │                                  │   │   [524.86268657, 785.07761194],   │ │
+│ │                                  │   │   [575.81304348, 913.65652174],   │ │
+│ │                                  │   │   [303.23684211, 865.28947368],   │ │
+│ │                                  │   │   [524.16834171, 796.54271357],   │ │
+│ │                                  │   │   [702.60286225, 842.32021467],   │ │
+│ │                                  │   │   [333.40776699, 902.03883495],   │ │
+│ │                                  │   │   [469.67779204, 934.33376123],   │ │
+│ │                                  │   │   [337.64285714, 846.85714286],   │ │
+│ │                                  │   │   [427.65454545, 811.66818182],   │ │
+│ │                                  │   │   [701.875     , 830.375     ],   │ │
+│ │                                  │   │   [338.6031746 , 855.23809524],   │ │
+│ │                                  │   │   [424.88888889, 916.22222222],   │ │
+│ │                                  │   │   [408.00896861, 913.43647235],   │ │
+│ │                                  │   │   [602.46017699, 823.37905605],   │ │
+│ │                                  │   │   [679.62195122, 884.67682927],   │ │
+│ │                                  │   │   [523.99285714, 908.95714286],   │ │
+│ │                                  │   │   [599.54166667, 773.02083333],   │ │
+│ │                                  │   │   [451.31914894, 862.97340426],   │ │
+│ │                                  │   │   [659.35638298, 821.12765957],   │ │
+│ │                                  │   │   [482.34931507, 832.59589041],   │ │
+│ │                                  │   │   [271.328125  , 843.671875  ],   │ │
+│ │                                  │   │   [705.34246575, 753.42465753]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[497.80487805, 895.10731707],   │ │
+│ │                                  │   │   [481.35965978, 889.41433779],   │ │
+│ │                                  │   │   [550.71361502, 817.75586854],   │ │
+│ │                                  │   │   [620.44444444, 879.25925926],   │ │
+│ │                                  │   │   [648.91397849, 916.27956989],   │ │
+│ │                                  │   │   [346.05807814, 917.19429778],   │ │
+│ │                                  │   │   [529.91954023, 785.        ],   │ │
+│ │                                  │   │   [583.76371308, 914.53586498],   │ │
+│ │                                  │   │   [309.57446809, 866.19148936],   │ │
+│ │                                  │   │   [530.17355372, 796.08539945],   │ │
+│ │                                  │   │   [709.74131944, 843.20138889],   │ │
+│ │                                  │   │   [338.52941176, 902.57142857],   │ │
+│ │                                  │   │   [476.95217391, 935.15507246],   │ │
+│ │                                  │   │   [342.78947368, 847.52631579],   │ │
+│ │                                  │   │   [432.45283019, 811.48584906],   │ │
+│ │                                  │   │   [709.42307692, 831.38461538],   │ │
+│ │                                  │   │   [343.94285714, 855.92857143],   │ │
+│ │                                  │   │   [431.57142857, 916.42857143],   │ │
+│ │                                  │   │   [414.002886  , 913.67099567],   │ │
+│ │                                  │   │   [608.43705799, 822.98019802],   │ │
+│ │                                  │   │   [687.12169312, 889.36507937],   │ │
+│ │                                  │   │   [529.99186992, 909.6097561 ],   │ │
+│ │                                  │   │   [605.89473684, 773.76315789],   │ │
+│ │                                  │   │   [456.43478261, 862.76630435],   │ │
+│ │                                  │   │   [666.22099448, 821.93370166],   │ │
+│ │                                  │   │   [486.94078947, 831.94078947],   │ │
+│ │                                  │   │   [275.94915254, 844.        ],   │ │
+│ │                                  │   │   [714.85185185, 754.07407407]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[498.2097561 , 899.51219512],   │ │
+│ │                                  │   │   [481.03649635, 893.80170316],   │ │
+│ │                                  │   │   [550.51627907, 822.8       ],   │ │
+│ │                                  │   │   [621.38235294, 880.42647059],   │ │
+│ │                                  │   │   [651.69331158, 919.17455139],   │ │
+│ │                                  │   │   [345.49492901, 921.56693712],   │ │
+│ │                                  │   │   [528.95367847, 789.84196185],   │ │
+│ │                                  │   │   [584.23497268, 918.66666667],   │ │
+│ │                                  │   │   [308.5       , 870.19047619],   │ │
+│ │                                  │   │   [529.56686047, 800.89244186],   │ │
+│ │                                  │   │   [709.0734767 , 847.39247312],   │ │
+│ │                                  │   │   [337.85      , 906.79      ],   │ │
+│ │                                  │   │   [476.7788873 , 939.41940086],   │ │
+│ │                                  │   │   [342.36363636, 851.66666667],   │ │
+│ │                                  │   │   [432.04411765, 816.55882353],   │ │
+│ │                                  │   │   [709.        , 835.75      ],   │ │
+│ │                                  │   │   [343.62318841, 860.05797101],   │ │
+│ │                                  │   │   [430.33333333, 920.33333333],   │ │
+│ │                                  │   │   [413.32934132, 918.25299401],   │ │
+│ │                                  │   │   [608.56321839, 827.97701149],   │ │
+│ │                                  │   │   [687.21146953, 897.07526882],   │ │
+│ │                                  │   │   [529.50724638, 914.14492754],   │ │
+│ │                                  │   │   [604.76923077, 779.33333333],   │ │
+│ │                                  │   │   [456.45989305, 867.32620321],   │ │
+│ │                                  │   │   [666.04395604, 826.44505495],   │ │
+│ │                                  │   │   [486.36363636, 837.4965035 ],   │ │
+│ │                                  │   │   [275.80357143, 848.64285714],   │ │
+│ │                                  │   │   [717.65116279, 757.19379845]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[498.30731707, 899.73658537],   │ │
+│ │                                  │   │   [481.37192118, 894.09852217],   │ │
+│ │                                  │   │   [550.93779904, 822.9569378 ],   │ │
+│ │                                  │   │   [621.33333333, 880.97916667],   │ │
+│ │                                  │   │   [649.84067358, 919.61917098],   │ │
+│ │                                  │   │   [345.66839378, 922.10673575],   │ │
+│ │                                  │   │   [529.5260274 , 789.81369863],   │ │
+│ │                                  │   │   [584.21978022, 918.84615385],   │ │
+│ │                                  │   │   [308.98305085, 870.83050847],   │ │
+│ │                                  │   │   [530.08474576, 800.93502825],   │ │
+│ │                                  │   │   [709.97404844, 848.23875433],   │ │
+│ │                                  │   │   [338.67716535, 907.5511811 ],   │ │
+│ │                                  │   │   [476.42777778, 938.72777778],   │ │
+│ │                                  │   │   [342.7804878 , 852.43902439],   │ │
+│ │                                  │   │   [432.28229665, 816.53588517],   │ │
+│ │                                  │   │   [708.96875   , 836.3125    ],   │ │
+│ │                                  │   │   [343.75384615, 860.76923077],   │ │
+│ │                                  │   │   [430.88888889, 921.22222222],   │ │
+│ │                                  │   │   [413.63447251, 918.42793462],   │ │
+│ │                                  │   │   [608.68911175, 828.12464183],   │ │
+│ │                                  │   │   [686.17714286, 892.61142857],   │ │
+│ │                                  │   │   [529.23870968, 914.21290323],   │ │
+│ │                                  │   │   [605.50909091, 778.87272727],   │ │
+│ │                                  │   │   [457.03157895, 867.67368421],   │ │
+│ │                                  │   │   [666.23497268, 826.68852459],   │ │
+│ │                                  │   │   [487.11320755, 837.25786164],   │ │
+│ │                                  │   │   [276.01694915, 849.06779661],   │ │
+│ │                                  │   │   [715.83412322, 759.56398104]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[499.33870968, 900.20430108],   │ │
+│ │                                  │   │   [481.52126367, 895.69987849],   │ │
+│ │                                  │   │   [551.715     , 825.005     ],   │ │
+│ │                                  │   │   [622.22857143, 883.18571429],   │ │
+│ │                                  │   │   [652.01954887, 920.73383459],   │ │
+│ │                                  │   │   [346.47287615, 923.34698055],   │ │
+│ │                                  │   │   [530.875     , 790.84593023],   │ │
+│ │                                  │   │   [585.144     , 920.388     ],   │ │
+│ │                                  │   │   [310.0625    , 872.        ],   │ │
+│ │                                  │   │   [531.06469003, 802.19946092],   │ │
+│ │                                  │   │   [710.64561404, 849.21403509],   │ │
+│ │                                  │   │   [339.79245283, 908.88679245],   │ │
+│ │                                  │   │   [477.69373219, 941.21082621],   │ │
+│ │                                  │   │   [343.83333333, 853.91666667],   │ │
+│ │                                  │   │   [434.05627706, 817.74025974],   │ │
+│ │                                  │   │   [709.69565217, 837.60869565],   │ │
+│ │                                  │   │   [344.65753425, 862.24657534],   │ │
+│ │                                  │   │   [431.88888889, 923.22222222],   │ │
+│ │                                  │   │   [414.25751073, 920.04291845],   │ │
+│ │                                  │   │   [609.40687679, 829.77363897],   │ │
+│ │                                  │   │   [687.96794872, 889.62820513],   │ │
+│ │                                  │   │   [530.67768595, 915.16528926],   │ │
+│ │                                  │   │   [606.16176471, 780.54411765],   │ │
+│ │                                  │   │   [457.65789474, 869.57368421],   │ │
+│ │                                  │   │   [667.28571429, 828.5       ],   │ │
+│ │                                  │   │   [487.1242236 , 838.71428571],   │ │
+│ │                                  │   │   [276.85964912, 850.77192982],   │ │
+│ │                                  │   │   [718.15037594, 759.82706767]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[501.2460733 , 900.41361257],   │ │
+│ │                                  │   │   [483.50181378, 895.5719468 ],   │ │
+│ │                                  │   │   [553.53439153, 824.59259259],   │ │
+│ │                                  │   │   [624.01769912, 886.44247788],   │ │
+│ │                                  │   │   [654.03134796, 922.82601881],   │ │
+│ │                                  │   │   [348.6677116 , 923.29780564],   │ │
+│ │                                  │   │   [532.54061625, 790.77871148],   │ │
+│ │                                  │   │   [587.40540541, 920.4972973 ],   │ │
+│ │                                  │   │   [311.67391304, 872.15217391],   │ │
+│ │                                  │   │   [533.15775401, 802.2459893 ],   │ │
+│ │                                  │   │   [712.63684211, 849.26491228],   │ │
+│ │                                  │   │   [341.44230769, 908.82692308],   │ │
+│ │                                  │   │   [480.39721793, 941.33384853],   │ │
+│ │                                  │   │   [344.7826087 , 853.82608696],   │ │
+│ │                                  │   │   [435.72072072, 817.7027027 ],   │ │
+│ │                                  │   │   [712.65      , 837.65      ],   │ │
+│ │                                  │   │   [346.68181818, 861.95454545],   │ │
+│ │                                  │   │   [433.88888889, 923.22222222],   │ │
+│ │                                  │   │   [416.64714495, 920.12005857],   │ │
+│ │                                  │   │   [611.41369472, 829.7617689 ],   │ │
+│ │                                  │   │   [691.01724138, 894.59770115],   │ │
+│ │                                  │   │   [532.66666667, 915.42063492],   │ │
+│ │                                  │   │   [608.38983051, 780.30508475],   │ │
+│ │                                  │   │   [460.01041667, 869.34895833],   │ │
+│ │                                  │   │   [669.54545455, 828.38383838],   │ │
+│ │                                  │   │   [489.24203822, 838.61146497],   │ │
+│ │                                  │   │   [278.87931034, 850.67241379],   │ │
+│ │                                  │   │   [721.71428571, 759.5037594 ]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[500.65346535, 905.31188119],   │ │
+│ │                                  │   │   [483.44772448, 900.02091021],   │ │
+│ │                                  │   │   [553.56756757, 829.10810811],   │ │
+│ │                                  │   │   [624.62637363, 887.67032967],   │ │
+│ │                                  │   │   [654.87481805, 924.57933042],   │ │
+│ │                                  │   │   [348.53039832, 927.34696017],   │ │
+│ │                                  │   │   [532.89548023, 795.4519774 ],   │ │
+│ │                                  │   │   [587.68823529, 924.34117647],   │ │
+│ │                                  │   │   [311.94444444, 876.41666667],   │ │
+│ │                                  │   │   [532.92370572, 806.51498638],   │ │
+│ │                                  │   │   [712.17647059, 853.57932264],   │ │
+│ │                                  │   │   [341.01030928, 912.75257732],   │ │
+│ │                                  │   │   [480.48531685, 945.66769706],   │ │
+│ │                                  │   │   [344.93548387, 857.67741935],   │ │
+│ │                                  │   │   [435.59633028, 821.64220183],   │ │
+│ │                                  │   │   [710.31578947, 842.47368421],   │ │
+│ │                                  │   │   [346.76056338, 866.        ],   │ │
+│ │                                  │   │   [433.88888889, 927.22222222],   │ │
+│ │                                  │   │   [415.96956522, 924.17101449],   │ │
+│ │                                  │   │   [611.36079545, 833.98721591],   │ │
+│ │                                  │   │   [688.98314607, 898.55617978],   │ │
+│ │                                  │   │   [532.65671642, 919.90298507],   │ │
+│ │                                  │   │   [608.25862069, 784.25862069],   │ │
+│ │                                  │   │   [459.42564103, 873.28717949],   │ │
+│ │                                  │   │   [669.64356436, 832.60891089],   │ │
+│ │                                  │   │   [489.77564103, 842.29487179],   │ │
+│ │                                  │   │   [279.1875    , 854.421875  ],   │ │
+│ │                                  │   │   [722.3986014 , 763.23076923]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[506.04324324, 901.36756757],   │ │
+│ │                                  │   │   [488.37094838, 896.69267707],   │ │
+│ │                                  │   │   [558.56218905, 825.15422886],   │ │
+│ │                                  │   │   [628.07042254, 883.90140845],   │ │
+│ │                                  │   │   [658.88455988, 921.34199134],   │ │
+│ │                                  │   │   [353.35781742, 924.21301154],   │ │
+│ │                                  │   │   [537.52769679, 791.95335277],   │ │
+│ │                                  │   │   [591.96666667, 921.32777778],   │ │
+│ │                                  │   │   [316.93023256, 873.20930233],   │ │
+│ │                                  │   │   [537.65768194, 803.30458221],   │ │
+│ │                                  │   │   [717.43137255, 850.24064171],   │ │
+│ │                                  │   │   [346.30909091, 909.66363636],   │ │
+│ │                                  │   │   [485.03216374, 942.58040936],   │ │
+│ │                                  │   │   [350.25      , 854.95833333],   │ │
+│ │                                  │   │   [440.56363636, 818.75909091],   │ │
+│ │                                  │   │   [717.24      , 838.4       ],   │ │
+│ │                                  │   │   [351.56716418, 863.07462687],   │ │
+│ │                                  │   │   [438.33333333, 924.33333333],   │ │
+│ │                                  │   │   [420.96142857, 920.98714286],   │ │
+│ │                                  │   │   [616.10982659, 830.64450867],   │ │
+│ │                                  │   │   [695.19753086, 890.60493827],   │ │
+│ │                                  │   │   [537.3046875 , 916.7578125 ],   │ │
+│ │                                  │   │   [613.27692308, 781.47692308],   │ │
+│ │                                  │   │   [464.12631579, 870.02105263],   │ │
+│ │                                  │   │   [674.21428571, 829.73626374],   │ │
+│ │                                  │   │   [494.18589744, 839.14102564],   │ │
+│ │                                  │   │   [283.42553191, 851.61702128],   │ │
+│ │                                  │   │   [726.53174603, 759.8015873 ]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[510.40314136, 909.27225131],   │ │
+│ │                                  │   │   [493.31097561, 903.70121951],   │ │
+│ │                                  │   │   [562.98882682, 832.8603352 ],   │ │
+│ │                                  │   │   [632.91346154, 893.72115385],   │ │
+│ │                                  │   │   [663.46906475, 929.0618705 ],   │ │
+│ │                                  │   │   [357.67355372, 931.57438017],   │ │
+│ │                                  │   │   [541.72928177, 799.82596685],   │ │
+│ │                                  │   │   [597.08333333, 928.52604167],   │ │
+│ │                                  │   │   [320.75      , 880.25      ],   │ │
+│ │                                  │   │   [542.26376812, 810.87246377],   │ │
+│ │                                  │   │   [721.4874552 , 857.31362007],   │ │
+│ │                                  │   │   [351.84466019, 917.04854369],   │ │
+│ │                                  │   │   [489.49921753, 949.6400626 ],   │ │
+│ │                                  │   │   [354.04545455, 862.04545455],   │ │
+│ │                                  │   │   [444.4047619 , 826.46666667],   │ │
+│ │                                  │   │   [722.71428571, 845.57142857],   │ │
+│ │                                  │   │   [355.97183099, 870.09859155],   │ │
+│ │                                  │   │   [442.88888889, 931.22222222],   │ │
+│ │                                  │   │   [425.59883721, 928.21802326],   │ │
+│ │                                  │   │   [620.77382646, 837.95590327],   │ │
+│ │                                  │   │   [701.10135135, 893.22297297],   │ │
+│ │                                  │   │   [542.65811966, 923.16239316],   │ │
+│ │                                  │   │   [617.4       , 788.6       ],   │ │
+│ │                                  │   │   [469.45685279, 877.84771574],   │ │
+│ │                                  │   │   [678.87623762, 836.44554455],   │ │
+│ │                                  │   │   [498.68493151, 847.04109589],   │ │
+│ │                                  │   │   [288.16176471, 858.64705882],   │ │
+│ │                                  │   │   [731.16546763, 767.75539568]]]) │ │
+│ │         epiframe_segmentations = dask.array<getitem, shape=(10, 1000,    │ │
+│ │                                  1000), dtype=uint8, chunksize=(1, 1000, │ │
+│ │                                  1000), chunktype=numpy.ndarray>         │ │
+│ │                      epiframes = [                                       │ │
+│ │                                  │   np.int64(0),                        │ │
+│ │                                  │   np.int64(8),                        │ │
+│ │                                  │   np.int64(46),                       │ │
+│ │                                  │   np.int64(90),                       │ │
+│ │                                  │   np.int64(114),                      │ │
+│ │                                  │   np.int64(142),                      │ │
+│ │                                  │   np.int64(170),                      │ │
+│ │                                  │   np.int64(175),                      │ │
+│ │                                  │   np.int64(185),                      │ │
+│ │                                  │   np.int64(194)                       │ │
+│ │                                  ]                                       │ │
+│ │                   epipositions = dask.array<sum-aggregate, shape=(2, -1, │ │
+│ │                                  3), dtype=float64, chunksize=(2, -1,    │ │
+│ │                                  3), chunktype=numpy.ndarray>            │ │
+│ │                    masterframe = array([[0.        , 0.        , 0.      │ │
+│ │                                  , ..., 0.20812988, 0.        ,          │ │
+│ │                                  │   │   0.        ],                    │ │
+│ │                                  │      [0.        , 0.        , 0.      │ │
+│ │                                  , ..., 0.18273926, 0.        ,          │ │
+│ │                                  │   │   0.        ],                    │ │
+│ │                                  │      [0.        , 0.        , 0.      │ │
+│ │                                  , ..., 0.15234375, 0.        ,          │ │
+│ │                                  │   │   0.        ],                    │ │
+│ │                                  │      ...,                             │ │
+│ │                                  │      [0.98974609, 1.        , 1.      │ │
+│ │                                  , ..., 0.79199219, 0.92382812,          │ │
+│ │                                  │   │   0.        ],                    │ │
+│ │                                  │      [0.12182617, 0.10150146,         │ │
+│ │                                  0.04568481, ..., 0.92382812, 0.         │ │
+│ │                                  ,                                       │ │
+│ │                                  │   │   0.74121094],                    │ │
+│ │                                  │      [0.        , 0.        , 0.      │ │
+│ │                                  , ..., 0.        , 0.74121094,          │ │
+│ │                                  │   │   0.        ]], shape=(1000,      │ │
+│ │                                  1000))                                  │ │
+│ │                   max_movement = 15                                      │ │
+│ │          motion_marker_centers = array([[[491.17475728, 894.7961165 ],   │ │
+│ │                                  │   │   [474.15719468, 889.68440145],   │ │
+│ │                                  │   │   [543.9040404 , 818.04040404],   │ │
+│ │                                  │   │   ...,                            │ │
+│ │                                  │   │   [480.1474359 , 831.63461538],   │ │
+│ │                                  │   │   [268.94736842, 844.14035088],   │ │
+│ │                                  │   │   [708.6626506 , 754.26506024]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[491.13043478, 894.85024155],   │ │
+│ │                                  │   │   [474.22572816, 889.67839806],   │ │
+│ │                                  │   │   [544.        , 817.93627451],   │ │
+│ │                                  │   │   ...,                            │ │
+│ │                                  │   │   [480.42944785, 831.68711656],   │ │
+│ │                                  │   │   [269.05084746, 844.18644068],   │ │
+│ │                                  │   │   [708.81547619, 754.25      ]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[491.04225352, 895.08450704],   │ │
+│ │                                  │   │   [474.41463415, 889.67682927],   │ │
+│ │                                  │   │   [544.1407767 , 818.04368932],   │ │
+│ │                                  │   │   ...,                            │ │
+│ │                                  │   │   [480.68452381, 831.61904762],   │ │
+│ │                                  │   │   [269.14516129, 844.33870968],   │ │
+│ │                                  │   │   [709.38323353, 754.34131737]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      ...,                             │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[510.40314136, 909.27225131],   │ │
+│ │                                  │   │   [493.31097561, 903.70121951],   │ │
+│ │                                  │   │   [562.98882682, 832.8603352 ],   │ │
+│ │                                  │   │   ...,                            │ │
+│ │                                  │   │   [498.68493151, 847.04109589],   │ │
+│ │                                  │   │   [288.16176471, 858.64705882],   │ │
+│ │                                  │   │   [731.16546763, 767.75539568]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[511.18134715, 908.49740933],   │ │
+│ │                                  │   │   [493.89202454, 903.29693252],   │ │
+│ │                                  │   │   [563.73333333, 832.43333333],   │ │
+│ │                                  │   │   ...,                            │ │
+│ │                                  │   │   [498.9030303 , 846.19393939],   │ │
+│ │                                  │   │   [289.0625    , 858.390625  ],   │ │
+│ │                                  │   │   [731.02173913, 767.7826087 ]],  │ │
+│ │                                  │                                       │ │
+│ │                                  │      [[511.31088083, 908.40932642],   │ │
+│ │                                  │   │   [494.05514706, 902.9129902 ],   │ │
+│ │                                  │   │   [563.92631579, 832.28421053],   │ │
+│ │                                  │   │   ...,                            │ │
+│ │                                  │   │   [498.75163399, 846.66013072],   │ │
+│ │                                  │   │   [289.10294118, 857.95588235],   │ │
+│ │                                  │   │   [731.01459854, 767.78832117]]], │ │
+│ │                                  shape=(197, 28, 2))                     │ │
+│ │                 motion_markers = <memory at 0x11e346500>                 │ │
+│ │             non_motion_markers = array([ 8, 24, 27, 33, 34, 47, 53, 54,  │ │
+│ │                                  97, 98, 99], dtype=uint16)              │ │
+│ │                  triangulation = <scipy.spatial._qhull.Delaunay object   │ │
+│ │                                  at 0x11e5ad880>                         │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│                                                                              │
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/dask/base.py:372 in compute       │
+│                                                                              │
+│    369 │   │   --------                                                      │
+│    370 │   │   dask.compute                                                  │
+│    371 │   │   """                                                           │
+│ ❱  372 │   │   (result,) = compute(self, traverse=False, **kwargs)           │
+│    373 │   │   return result                                                 │
+│    374 │                                                                     │
+│    375 │   def __await__(self):                                              │
+│                                                                              │
+│ ╭───────────────────────────────── locals ─────────────────────────────────╮ │
+│ │ kwargs = {}                                                              │ │
+│ │   self = dask.array<sum-aggregate, shape=(2, -1, 3), dtype=float64,      │ │
+│ │          chunksize=(2, -1, 3), chunktype=numpy.ndarray>                  │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│                                                                              │
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/dask/base.py:660 in compute       │
+│                                                                              │
+│    657 │   │   postcomputes.append(x.__dask_postcompute__())                 │
+│    658 │                                                                     │
+│    659 │   with shorten_traceback():                                         │
+│ ❱  660 │   │   results = schedule(dsk, keys, **kwargs)                       │
+│    661 │                                                                     │
+│    662 │   return repack([f(r, *a) for r, (f, a) in zip(results, postcompute │
+│    663                                                                       │
+│                                                                              │
+│ ╭───────────────────────────────── locals ─────────────────────────────────╮ │
+│ │           args = (                                                       │ │
+│ │                  │   dask.array<sum-aggregate, shape=(2, -1, 3),         │ │
+│ │                  dtype=float64, chunksize=(2, -1, 3),                    │ │
+│ │                  chunktype=numpy.ndarray>,                               │ │
+│ │                  )                                                       │ │
+│ │    collections = [                                                       │ │
+│ │                  │   dask.array<sum-aggregate, shape=(2, -1, 3),         │ │
+│ │                  dtype=float64, chunksize=(2, -1, 3),                    │ │
+│ │                  chunktype=numpy.ndarray>                                │ │
+│ │                  ]                                                       │ │
+│ │            dsk = {                                                       │ │
+│ │                  │   ('sum-aggregate-b854080f5f86e250d4815b073bfb0d88',  │ │
+│ │                  0, 0, 0): <Task                                         │ │
+│ │                  ('sum-aggregate-b854080f5f86e250d4815b073bfb0d88', 0,   │ │
+│ │                  0, 0) Compose(...)>,                                    │ │
+│ │                  │   ('sum-partial-aa11fd5a5aa39eeecfdc97ed532b42e9', 0, │ │
+│ │                  0, 0, 0): <Task                                         │ │
+│ │                  ('sum-partial-aa11fd5a5aa39eeecfdc97ed532b42e9', 0, 0,  │ │
+│ │                  0, 0) Compose(...)>,                                    │ │
+│ │                  │   ('sum-partial-aa11fd5a5aa39eeecfdc97ed532b42e9', 1, │ │
+│ │                  0, 0, 0): <Task                                         │ │
+│ │                  ('sum-partial-aa11fd5a5aa39eeecfdc97ed532b42e9', 1, 0,  │ │
+│ │                  0, 0) Compose(...)>,                                    │ │
+│ │                  │   ('sum-partial-aa11fd5a5aa39eeecfdc97ed532b42e9', 2, │ │
+│ │                  0, 0, 0): <Task                                         │ │
+│ │                  ('sum-partial-aa11fd5a5aa39eeecfdc97ed532b42e9', 2, 0,  │ │
+│ │                  0, 0) Compose(...)>,                                    │ │
+│ │                  │                                                       │ │
+│ │                  ('compute_local_coordinates-sum-d2a2eff5098e34765298cd… │ │
+│ │                  0, 0, 0, 0): <Task                                      │ │
+│ │                  ('compute_local_coordinates-sum-d2a2eff5098e34765298cd… │ │
+│ │                  0, 0, 0, 0) _execute_subgraph(...)>,                    │ │
+│ │                  │   ('sum-d2a2eff5098e34765298cdcdb4a51ed8', 0, 0, 0,   │ │
+│ │                  0): Alias(('sum-d2a2eff5098e34765298cdcdb4a51ed8', 0,   │ │
+│ │                  0, 0,                                                   │ │
+│ │                  0)->('compute_local_coordinates-sum-d2a2eff5098e347652… │ │
+│ │                  0, 0, 0, 0)),                                           │ │
+│ │                  │                                                       │ │
+│ │                  ('compute_local_coordinates-sum-d2a2eff5098e34765298cd… │ │
+│ │                  1, 0, 0, 0): <Task                                      │ │
+│ │                  ('compute_local_coordinates-sum-d2a2eff5098e34765298cd… │ │
+│ │                  1, 0, 0, 0) _execute_subgraph(...)>,                    │ │
+│ │                  │   ('sum-d2a2eff5098e34765298cdcdb4a51ed8', 1, 0, 0,   │ │
+│ │                  0): Alias(('sum-d2a2eff5098e34765298cdcdb4a51ed8', 1,   │ │
+│ │                  0, 0,                                                   │ │
+│ │                  0)->('compute_local_coordinates-sum-d2a2eff5098e347652… │ │
+│ │                  1, 0, 0, 0)),                                           │ │
+│ │                  │                                                       │ │
+│ │                  ('compute_local_coordinates-sum-d2a2eff5098e34765298cd… │ │
+│ │                  2, 0, 0, 0): <Task                                      │ │
+│ │                  ('compute_local_coordinates-sum-d2a2eff5098e34765298cd… │ │
+│ │                  2, 0, 0, 0) _execute_subgraph(...)>,                    │ │
+│ │                  │   ('sum-d2a2eff5098e34765298cdcdb4a51ed8', 2, 0, 0,   │ │
+│ │                  0): Alias(('sum-d2a2eff5098e34765298cdcdb4a51ed8', 2,   │ │
+│ │                  0, 0,                                                   │ │
+│ │                  0)->('compute_local_coordinates-sum-d2a2eff5098e347652… │ │
+│ │                  2, 0, 0, 0)),                                           │ │
+│ │                  │   ... +88                                             │ │
+│ │                  }                                                       │ │
+│ │            get = None                                                    │ │
+│ │           keys = [                                                       │ │
+│ │                  │   [                                                   │ │
+│ │                  │   │   [                                               │ │
+│ │                  │   │   │   [                                           │ │
+│ │                  │   │   │   │   (                                       │ │
+│ │                  │   │   │   │   │                                       │ │
+│ │                  'sum-aggregate-b854080f5f86e250d4815b073bfb0d88',       │ │
+│ │                  │   │   │   │   │   0,                                  │ │
+│ │                  │   │   │   │   │   0,                                  │ │
+│ │                  │   │   │   │   │   0                                   │ │
+│ │                  │   │   │   │   )                                       │ │
+│ │                  │   │   │   ]                                           │ │
+│ │                  │   │   ]                                               │ │
+│ │                  │   ]                                                   │ │
+│ │                  ]                                                       │ │
+│ │         kwargs = {}                                                      │ │
+│ │ optimize_graph = True                                                    │ │
+│ │   postcomputes = [(<function finalize at 0x11bb2a480>, ())]              │ │
+│ │      scheduler = None                                                    │ │
+│ │       traverse = False                                                   │ │
+│ │              x = dask.array<sum-aggregate, shape=(2, -1, 3),             │ │
+│ │                  dtype=float64, chunksize=(2, -1, 3),                    │ │
+│ │                  chunktype=numpy.ndarray>                                │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│                                                                              │
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/chromas/source/slicing/slicing.py │
+│ :173 in compute_local_coordinates                                            │
+│                                                                              │
+│   170 │   │   simplices = triangulation.simplices[triangulation.find_simplex │
+│   171 │   │   local_motion_marker_centers = acs[simplices]                   │
+│   172 │   │                                                                  │
+│ ❱ 173 │   │   barycentric_coords = np.array([cartesian2barycentric_coordinat │
+│   174 │   │                                                                  │
+│   175 │   │   output[i, 0, resting_chromatophores] = barycentric_coords      │
+│   176 │   │   simplices[np.isnan(simplices)] = 0                             │
+│                                                                              │
+│ ╭───────────────────────────────── locals ─────────────────────────────────╮ │
+│ │                            acs = array([[501.2460733 , 900.41361257],    │ │
+│ │                                  │      [483.50181378, 895.5719468 ],    │ │
+│ │                                  │      [553.53439153, 824.59259259],    │ │
+│ │                                  │      [624.01769912, 886.44247788],    │ │
+│ │                                  │      [654.03134796, 922.82601881],    │ │
+│ │                                  │      [348.6677116 , 923.29780564],    │ │
+│ │                                  │      [532.54061625, 790.77871148],    │ │
+│ │                                  │      [587.40540541, 920.4972973 ],    │ │
+│ │                                  │      [311.67391304, 872.15217391],    │ │
+│ │                                  │      [533.15775401, 802.2459893 ],    │ │
+│ │                                  │      [712.63684211, 849.26491228],    │ │
+│ │                                  │      [341.44230769, 908.82692308],    │ │
+│ │                                  │      [480.39721793, 941.33384853],    │ │
+│ │                                  │      [344.7826087 , 853.82608696],    │ │
+│ │                                  │      [435.72072072, 817.7027027 ],    │ │
+│ │                                  │      [712.65      , 837.65      ],    │ │
+│ │                                  │      [346.68181818, 861.95454545],    │ │
+│ │                                  │      [433.88888889, 923.22222222],    │ │
+│ │                                  │      [416.64714495, 920.12005857],    │ │
+│ │                                  │      [611.41369472, 829.7617689 ],    │ │
+│ │                                  │      [691.01724138, 894.59770115],    │ │
+│ │                                  │      [532.66666667, 915.42063492],    │ │
+│ │                                  │      [608.38983051, 780.30508475],    │ │
+│ │                                  │      [460.01041667, 869.34895833],    │ │
+│ │                                  │      [669.54545455, 828.38383838],    │ │
+│ │                                  │      [489.24203822, 838.61146497],    │ │
+│ │                                  │      [278.87931034, 850.67241379],    │ │
+│ │                                  │      [721.71428571, 759.5037594 ]])   │ │
+│ │                  all_epiframes = array([176,   0,   0,   0,   0,   0,    │ │
+│ │                                  0,   0,  90,   0,   0,   0,   0,        │ │
+│ │                                  │   │    0,   0, 180, 108,   0,   0,    │ │
+│ │                                  0,   0,   0,   8, 171, 142, 187,        │ │
+│ │                                  │      172,  46,  16,  17, 188,   0,    │ │
+│ │                                  0,   8, 175,   0,   0,   0, 187,        │ │
+│ │                                  │   │   97,   0,   0, 180,   0,   0,    │ │
+│ │                                  50,   0, 185, 187,   0, 111,  93,       │ │
+│ │                                  │   │    0, 114, 170,   0,   0,   0,    │ │
+│ │                                  0, 139, 117,   0,  71,   0,   0,        │ │
+│ │                                  │   │    0,   0,   0,   0,  51,  19,    │ │
+│ │                                  177,   0,   0,   0,   0,   0,   0,      │ │
+│ │                                  │   │    0,   0,   0,   0,   0,   0,    │ │
+│ │                                  87,   9, 157,   0,   0,   0,   0,       │ │
+│ │                                  │      191,   0,  47,   0,  83,  24,    │ │
+│ │                                  194,   0, 194,   0,   0,   0,   0,      │ │
+│ │                                  │   │    0,   0,   0,  43,   0,   0,    │ │
+│ │                                  0,   0, 155,  17, 185,   0,  30,        │ │
+│ │                                  │   │    0,   0,   0])                  │ │
+│ │                         buffer = 40                                      │ │
+│ │                    cleanqueens = array([[[0, 0, 0, ..., 0, 0, 0],        │ │
+│ │                                  │   │   [0, 0, 0, ..., 0, 0, 0],        │ │
+│ │                                  │   │   [0, 0, 0, ..., 0, 0, 0],        │ │
+│ │                                  │   │   ...,                            │ │
+│ │                                  │   │   [0, 0, 0, ..., 0, 0, 0],        │ │
+│ │                                  │   │   [0, 0, 0, ..., 0, 0, 0],        │ │
+│ │                                  │   │   [0, 0, 0, ..., 0, 0, 0]]],      │ │
+│ │                                  shape=(1, 1000, 1000), dtype=uint16)    │ │
+│ │                            clq = array([[0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      ...,                             │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0]],        │ │
+│ │                                  shape=(1000, 1000), dtype=uint16)       │ │
+│ │                      epiframes = [                                       │ │
+│ │                                  │   np.int64(0),                        │ │
+│ │                                  │   np.int64(8),                        │ │
+│ │                                  │   np.int64(46),                       │ │
+│ │                                  │   np.int64(90),                       │ │
+│ │                                  │   np.int64(114),                      │ │
+│ │                                  │   np.int64(142),                      │ │
+│ │                                  │   np.int64(170),                      │ │
+│ │                                  │   np.int64(175),                      │ │
+│ │                                  │   np.int64(185),                      │ │
+│ │                                  │   np.int64(194)                       │ │
+│ │                                  ]                                       │ │
+│ │                          frame = np.int64(170)                           │ │
+│ │                         frames = array([170])                            │ │
+│ │                              i = 0                                       │ │
+│ │    local_motion_marker_centers = array([[[712.65      , 837.65      ],   │ │
+│ │                                  │   │   [669.54545455, 828.38383838],   │ │
+│ │                                  │   │   [721.71428571, 759.5037594 ]]]) │ │
+│ │         motion_marker_centerss = array([[[501.2460733 , 900.41361257],   │ │
+│ │                                  │   │   [483.50181378, 895.5719468 ],   │ │
+│ │                                  │   │   [553.53439153, 824.59259259],   │ │
+│ │                                  │   │   [624.01769912, 886.44247788],   │ │
+│ │                                  │   │   [654.03134796, 922.82601881],   │ │
+│ │                                  │   │   [348.6677116 , 923.29780564],   │ │
+│ │                                  │   │   [532.54061625, 790.77871148],   │ │
+│ │                                  │   │   [587.40540541, 920.4972973 ],   │ │
+│ │                                  │   │   [311.67391304, 872.15217391],   │ │
+│ │                                  │   │   [533.15775401, 802.2459893 ],   │ │
+│ │                                  │   │   [712.63684211, 849.26491228],   │ │
+│ │                                  │   │   [341.44230769, 908.82692308],   │ │
+│ │                                  │   │   [480.39721793, 941.33384853],   │ │
+│ │                                  │   │   [344.7826087 , 853.82608696],   │ │
+│ │                                  │   │   [435.72072072, 817.7027027 ],   │ │
+│ │                                  │   │   [712.65      , 837.65      ],   │ │
+│ │                                  │   │   [346.68181818, 861.95454545],   │ │
+│ │                                  │   │   [433.88888889, 923.22222222],   │ │
+│ │                                  │   │   [416.64714495, 920.12005857],   │ │
+│ │                                  │   │   [611.41369472, 829.7617689 ],   │ │
+│ │                                  │   │   [691.01724138, 894.59770115],   │ │
+│ │                                  │   │   [532.66666667, 915.42063492],   │ │
+│ │                                  │   │   [608.38983051, 780.30508475],   │ │
+│ │                                  │   │   [460.01041667, 869.34895833],   │ │
+│ │                                  │   │   [669.54545455, 828.38383838],   │ │
+│ │                                  │   │   [489.24203822, 838.61146497],   │ │
+│ │                                  │   │   [278.87931034, 850.67241379],   │ │
+│ │                                  │   │   [721.71428571, 759.5037594 ]]]) │ │
+│ │             non_motion_markers = array([ 8, 24, 27, 33, 34, 47, 53, 54,  │ │
+│ │                                  97, 98, 99], dtype=uint16)              │ │
+│ │                         output = array([[[[0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.]],                 │ │
+│ │                                  │   │                                   │ │
+│ │                                  │   │   [[0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.],                  │ │
+│ │                                  │   │    [0., 0., 0.]]]])               │ │
+│ │         resting_chromatophores = array([54])                             │ │
+│ │ resting_chromatophores_centers = array([[697.5, 803. ]])                 │ │
+│ │                            seg = array([[0, 1, 1, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 1, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      ...,                             │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0],         │ │
+│ │                                  │      [0, 0, 0, ..., 0, 0, 0]],        │ │
+│ │                                  shape=(1000, 1000), dtype=uint8)        │ │
+│ │                  segmentations = array([[[0, 1, 1, ..., 0, 0, 0],        │ │
+│ │                                  │   │   [0, 0, 1, ..., 0, 0, 0],        │ │
+│ │                                  │   │   [0, 0, 0, ..., 0, 0, 0],        │ │
+│ │                                  │   │   ...,                            │ │
+│ │                                  │   │   [0, 0, 0, ..., 0, 0, 0],        │ │
+│ │                                  │   │   [0, 0, 0, ..., 0, 0, 0],        │ │
+│ │                                  │   │   [0, 0, 0, ..., 0, 0, 0]]],      │ │
+│ │                                  shape=(1, 1000, 1000), dtype=uint8)     │ │
+│ │                      simplices = array([[15, 24, 27]], dtype=int32)      │ │
+│ │                  triangulation = <scipy.spatial._qhull.Delaunay object   │ │
+│ │                                  at 0x11e8241a0>                         │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│                                                                              │
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/chromas/source/slicing/slicing.py │
+│ :137 in cartesian2barycentric_coordinates                                    │
+│                                                                              │
+│   134                                                                        │
+│   135 def cartesian2barycentric_coordinates(r: np.ndarray, tri: tuple[np.nda │
+│   136 │   r1, r2, r3 = tri                                                   │
+│ ❱ 137 │   denominator = np.cross(r1 - r3, r2 - r3)                           │
+│   138 │   l1 = np.cross(r - r3, r2 - r3) / denominator                       │
+│   139 │   l2 = np.cross(r - r3, r3 - r1) / denominator                       │
+│   140 │   coords = np.array([l1, l2, 1 - l1 - l2])                           │
+│                                                                              │
+│ ╭────────────────── locals ───────────────────╮                              │
+│ │   r = array([697.5, 803. ])                 │                              │
+│ │  r1 = array([712.65, 837.65])               │                              │
+│ │  r2 = array([669.54545455, 828.38383838])   │                              │
+│ │  r3 = array([721.71428571, 759.5037594 ])   │                              │
+│ │ tri = array([[712.65      , 837.65      ],  │                              │
+│ │       │      [669.54545455, 828.38383838],  │                              │
+│ │       │      [721.71428571, 759.5037594 ]]) │                              │
+│ ╰─────────────────────────────────────────────╯                              │
+│                                                                              │
+│ . │
+│ s-spike/.venv/lib/python3.12/site-packages/numpy/_core/numeric.py:1680 in    │
+│ cross                                                                        │
+│                                                                              │
+│   1677 │   a = moveaxis(a, axisa, -1)                                        │
+│   1678 │   b = moveaxis(b, axisb, -1)                                        │
+│   1679 │   if a.shape[-1] != 3 or b.shape[-1] != 3:                          │
+│ ❱ 1680 │   │   raise ValueError(                                             │
+│   1681 │   │   │   f"Both input arrays must be (arrays of) 3-dimensional vec │
+│   1682 │   │   │   f"but they are {a.shape[-1]} and {b.shape[-1]} dimensiona │
+│   1683 │   │   )                                                             │
+│                                                                              │
+│ ╭────────────────── locals ───────────────────╮                              │
+│ │     a = array([-9.06428571, 78.1462406 ])   │                              │
+│ │  axis = None                                │                              │
+│ │ axisa = 0                                   │                              │
+│ │ axisb = 0                                   │                              │
+│ │ axisc = -1                                  │                              │
+│ │     b = array([-52.16883117,  68.88007899]) │                              │
+│ ╰─────────────────────────────────────────────╯                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+ValueError: Both input arrays must be (arrays of) 3-dimensional vectors, but 
+they are 2 and 2 dimensional instead.
+
+
+Slicing failed!

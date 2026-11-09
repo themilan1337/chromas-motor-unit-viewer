@@ -1,0 +1,10 @@
+Real co-occurrence count (≥2 times): 24
+Simulating random co-occurrences:   0%|          | 0/1000 [00:00<?, ?it/s]Simulating random co-occurrences:  75%|███████▌  | 750/1000 [00:00<00:00, 4976.87it/s]Simulating random co-occurrences: 100
+motor_units/mu_cooccurence.py:130: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be 
+  plt.show()
+motor_units/mu_cooccurence.py:158: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be 
+  plt.show()
+
+Mean random co-occurrence (≥2) ± SD: 14.02 ± 3.01
+Z-score: 3.31
+P-value: 0.0009167068

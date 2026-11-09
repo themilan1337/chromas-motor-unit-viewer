@@ -1,0 +1,29 @@
+Processing 1 chunks.
+[WARNING] Deleting slicing from dataset since it already existed.
+Using reference chunk 0 for motion marker selection.
+
+Selecting motion markers for all chunks.
+  cv = np.std(areas_t, axis=1) / np.mean(areas_t, axis=1)
+Compute sliceareas for all chunks
+Computing slice areas for chunk_1 (1/1).
+Computing epicenters of motion markers...
+  results = [sum_labels(input * grids[dir].astype(float), labels, index) / normalizer
+Found 15 motion markers, 2 non-motion-markers and 2 epiframes.
+Computing local coordinates...
+Computing epicenters...
+Computing sliceareas for chunk chunk_1 (100.00%).
+Stored epicenters and sliceareas for chunk chunk_1 (100.00%).
+Concatenating slice areas from all chunks.
+
+Slicing complete.
+Run ICA on chunk 1 of work/ds_c1
+Run PCA-ICA:   0%|          | 0/2 [00:00<?, ?chrom/s]Run PCA-ICA:  50%|█████     | 1/2 [00:00<00:00,  5.49chrom/s]Run PCA-ICA: 100%|██████████| 2/2 [00:00<00:00,  3.08chrom/s]Run PCA-ICA: 100%|██████████| 2/2 [00:00<00:00,  3.29chrom/s]
+
+ICA complete.
+Using chunk 1 for ICA.
+Load IC sources for all chroms: 0chrom [00:00, ?chrom/s]Load IC sources for all chroms: 2chrom [00:00, 73.63chrom/s]
+Excluded 0 chromatophores from analysis due to errors in individual ICA for that chromatophores.
+Compute correlation matrix for 8 IC sources (ICs.data[IC_mask.data].shape=(8, 197)).
+Found 1 IC clusters.
+
+ICA slice clustering complete.

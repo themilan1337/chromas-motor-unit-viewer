@@ -1,0 +1,6 @@
+work/sepia_example.dataset ica_chunk_0: ICs 49, chromatophores 11, clusters 11, IC pairs 1176
+  within-cluster pairs 98: mean |r| 0.122; between-cluster pairs 1078: mean |r| 0.052
+  max |r| of any pair 0.326; pairs with |r|>=0.5: 0; >=0.9: 0
+work/ds_c2 ica_chunk_2: ICs 33, chromatophores 8, clusters 6, IC pairs 528
+  within-cluster pairs 83: mean |r| 0.126; between-cluster pairs 445: mean |r| 0.052
+  max |r| of any pair 0.501; pairs with |r|>=0.5: 1; >=0.9: 0

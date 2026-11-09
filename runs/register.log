@@ -1,0 +1,46 @@
+Dashboard: http://127.0.0.1:8787/status
+Processing 3 chunks.
+Track points using optical flow for chunk_0...
+Point detection frame 0 has 24.865% segmentation coverage.
+Trying to find between 40 and 900 points.
+Tracking points
+Stored optical flow tracked points for chunk chunk_0 (33.33%).
+Interpolating pullback and pushforward maps for chunk_0...
+Stored interpolated maps for chunk chunk_0 (33.33%).
+Computing masterframe for chunk_0...
+Stored masterframe for chunk_0 (33.33 %).
+
+Track points using optical flow for chunk_1...
+Point detection frame 0 has 22.688% segmentation coverage.
+Trying to find between 40 and 900 points.
+Tracking points
+Stored optical flow tracked points for chunk chunk_1 (66.67%).
+Interpolating pullback and pushforward maps for chunk_1...
+Stored interpolated maps for chunk chunk_1 (66.67%).
+Computing masterframe for chunk_1...
+Stored masterframe for chunk_1 (66.67 %).
+
+Track points using optical flow for chunk_2...
+Point detection frame 0 has 21.902% segmentation coverage.
+Trying to find between 40 and 900 points.
+Tracking points
+Stored optical flow tracked points for chunk chunk_2 (100.00%).
+Interpolating pullback and pushforward maps for chunk_2...
+Stored interpolated maps for chunk chunk_2 (100.00%).
+Computing masterframe for chunk_2...
+Stored masterframe for chunk_2 (100.00 %).
+
+2026-11-09 04:28:23,179 - distributed.core - ERROR - Exception while handling op terminate
+Traceback (most recent call last):
+  File "./.venv/lib/python3.12/site-packages/distributed/core.py", line 834, in _handle_comm
+    result = await result
+             ^^^^^^^^^^^^
+  File "./.venv/lib/python3.12/site-packages/distributed/scheduler.py", line 4309, in close
+    self.stop_services()
+  File "./.venv/lib/python3.12/site-packages/distributed/node.py", line 79, in stop_services
+    application.stop()
+  File "./.venv/lib/python3.12/site-packages/bokeh/server/tornado.py", line 761, in stop
+    raise RuntimeError("Cannot synchronously wait on a running event loop; use 'await stop_async()'")
+RuntimeError: Cannot synchronously wait on a running event loop; use 'await stop_async()'
+
+Registration complete.

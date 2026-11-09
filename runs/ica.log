@@ -1,0 +1,10 @@
+Run ICA on chunk 0 of work/sepia_example.dataset
+Run PCA-ICA:   0%|          | 0/11 [00:00<?, ?chrom/s]Run PCA-ICA:   9%|▉         | 1/11 [00:00<00:01,  6.24chrom/s]Did not converge for n_components=np.int64(4).
+	FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+Did not converge for n_components=np.int64(3).
+	FastICA did not converge. Consider increasing tolerance or the maximum number of iterations.
+./.venv/lib/python3.12/site-packages/chromas/source/ica/ica_utils.py:54: RuntimeWarning: invalid value encountered in divide
+  percentage_influence = (abs_mixing_matrix / sum_per_slice) * 100
+Run PCA-ICA: 100%|██████████| 11/11 [00:00<00:00, 43.33chrom/s]
+
+ICA complete.

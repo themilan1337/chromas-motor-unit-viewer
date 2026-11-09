@@ -1,0 +1,13 @@
+motor_units/cluster_size.py:82: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be sho
+  plt.show()
+motor_units/cluster_size.py:115: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be sh
+  plt.show()
+mean number of components: 4.45
+median number of components: 4.0
+90th percentile: 8.00
+Total clusters: 11
+Mean size: 4.09
+Median size: 4.0
+90% ≤ 6.0
+95% ≤ 6.0
+Max size: 6
